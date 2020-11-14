@@ -1,9 +1,17 @@
 import ply.lex as lex
 reserved = {
+    "alias": "ALIAS",
+    "and": "AND",
+    "break": "BREAK",
+    "case": "CASE",
     "while":"WHILE",
     "end":"END",
     "do":"DO",
-    "def":"FUNCION"
+    "def":"FUNCION",
+    "else":"ELSE",
+    "if":"IF",
+    "or":"OR",
+    "puts":"PUTS"
 }
 tokens = [
     "VARIABLE_GLOBAL",
@@ -16,7 +24,16 @@ tokens = [
     "MAS",
     "RESTA",
     "AND",
-    "MENOR"
+    "MENOR",
+    "MAYOR",
+    "CADENA",
+    "CIZQ",
+    "CDER",
+    "ARRAY",
+    "LIZQ",
+    "LDER",
+    "PIZQ",
+    "PDER"
 
 ] + list(reserved.values())
 
@@ -26,6 +43,15 @@ t_ENTERO = r"\d+"
 t_RESTA=r"-"
 t_AND=r"&&"
 t_MENOR=r"<"
+t_MAYOR=r">"
+t_CADENA= r'"[a-zA-Z0-9\s]*"'
+t_CIZQ = r"\["
+t_CDER = r"\]"
+t_LIZQ = r"\{"
+t_LDER = r"\}"
+t_PIZQ = r"\("
+t_PDER = r"\)"
+t_ARRAY = r"\[(('([a-zA-z\s])*'|[0-9]+|[0-9]+,?[0-9]*),?)+\]"
 def t_CONSTANTE(t):
     r"[A-Z][a-zA-Z0-9_]*"
     t.type = reserved.get(t.value, 'CONSTANTE')  # Check for reserved words
