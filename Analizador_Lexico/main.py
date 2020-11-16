@@ -1,18 +1,3 @@
-import ply.lex as lex
-reserved = {
-    "alias": "ALIAS",
-    "and": "AND",
-    "break": "BREAK",
-    "case": "CASE",
-    "while":"WHILE",
-    "end":"END",
-    "do":"DO",
-    "def":"FUNCION",
-    "else":"ELSE",
-    "if":"IF",
-    "or":"OR",
-    "puts":"PUTS"
-}
 tokens = [
     "VARIABLE_GLOBAL",
     "VARIABLE_LOCAL",
@@ -30,10 +15,12 @@ tokens = [
     "CIZQ",
     "CDER",
     "ARRAY",
+    "HASH",
     "LIZQ",
     "LDER",
     "PIZQ",
-    "PDER"
+    "PDER",
+    "RANGO"
 
 ] + list(reserved.values())
 
@@ -51,7 +38,10 @@ t_LIZQ = r"\{"
 t_LDER = r"\}"
 t_PIZQ = r"\("
 t_PDER = r"\)"
+t_RANGO= r"\.\."
 t_ARRAY = r"\[(('([a-zA-z\s])*'|[0-9]+|[0-9]+,?[0-9]*),?)+\]"
+t_HASH = r"\{((\"|')?[a-zA-Z_][a-zA-Z0-9_\s]*(\"|')?(\:|\=>)([0-9]|[1-9][0-9]*|(\"|')[\w\s]+(\"|')),?)+\}"
+
 def t_CONSTANTE(t):
     r"[A-Z][a-zA-Z0-9_]*"
     t.type = reserved.get(t.value, 'CONSTANTE')  # Check for reserved words
@@ -90,10 +80,9 @@ def analizar(data):
         print(tok)
 
 
-archivo = open("../archivos/ejemplos.txt")
+archivo = open("./archivos/codigo.txt")
 for linea in archivo:
     print(">>"+linea)
     analizar(linea)
     if len(linea)==0:
         break
-
