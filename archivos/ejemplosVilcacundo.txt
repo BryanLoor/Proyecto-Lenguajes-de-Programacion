@@ -1,0 +1,7 @@
+if x > 2
+puts "x es mayor que 2"
+else
+puts "No puedo adivinar el numero"
+end
+muebles = ['Silla','Mesa','Armario']
+

@@ -1,7 +1,6 @@
 import ply.lex as lex
 reserved = {
     "alias": "ALIAS",
-    "and": "AND",
     "break": "BREAK",
     "case": "CASE",
     "while":"WHILE",
@@ -10,7 +9,6 @@ reserved = {
     "def":"FUNCION",
     "else":"ELSE",
     "if":"IF",
-    "or":"OR",
     "puts":"PUTS",
     "for":"FOR",
     "unless":"UNLESS"
@@ -25,7 +23,6 @@ tokens = [
     "ENTERO",
     "MAS",
     "RESTA",
-    "AND",
     "MENOR",
     "MAYOR",
     "CADENA",
@@ -39,15 +36,17 @@ tokens = [
     "LDER",
     "PIZQ",
     "PDER",
-    "RANGO"
+    "RANGO",
+    "AND",
+    "OR"
 
 ] + list(reserved.values())
-
+t_AND=r"&&"
+t_OR=r"\|\|"
 t_IGUAL= r"="
 t_MAS = r"\+"
 t_ENTERO = r"\d+"
 t_RESTA=r"-"
-t_AND=r"&&"
 t_MENOR=r"<"
 t_MAYOR=r">"
 t_CADENA= r'"[a-zA-Z0-9\s]*"'
@@ -100,10 +99,17 @@ def analizar(data):
             break  # No more input
         print(tok)
 
+def leer(file):
+    for linea in file:
+        print(">>" + linea)
+        analizar(linea)
+        if len(linea) == 0:
+            break
 
-archivo = open("./archivos/codigo.txt")
-for linea in archivo:
-    print(">>"+linea)
-    analizar(linea)
-    if len(linea)==0:
-        break
+archivo1 = open("../archivos/ejemplosVilcacundo.txt")
+archivo2 = open("../archivos/ejemplosLoor.txt")
+archivo3 = open("../archivos/ejemplosAsqui.txt")
+
+leer(archivo1)
+leer(archivo2)
+leer(archivo3)

@@ -1,0 +1,10 @@
+while $i < $num do
+    $i+=1
+end
+Const=500
+num0=12-4
+@num1=15
+@@num2=100
+$num3=120
+a&&b
+a||b

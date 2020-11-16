@@ -1,17 +1,3 @@
-while $i < $num do
-    $i+=1
-end
-Const=500
-num0=12-4
-@num1=15
-@@num2=100
-$num3=120
-if x > 2
-puts "x es mayor que 2"
-else
-puts "No puedo adivinar el numero"
-end
-muebles = ['Silla','Mesa','Armario']
 grades = {"Jane Doe"=>10,"Jim Doe"=>6}
 options = {font_size:10,font_family:"Arial"}
 dep = {dep1:1000,dep2:34500,dep3:3009}
