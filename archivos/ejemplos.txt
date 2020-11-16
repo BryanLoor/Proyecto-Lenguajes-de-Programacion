@@ -12,3 +12,15 @@ else
 puts "No puedo adivinar el numero"
 end
 muebles = ['Silla','Mesa','Armario']
+grades = {"Jane Doe"=>10,"Jim Doe"=>6}
+options = {font_size:10,font_family:"Arial"}
+dep = {dep1:1000,dep2:34500,dep3:3009}
+person = {name:'Alejandro',last_name:'Romero',age:28}
+unless a<b
+    puts  "b es menor de a"
+else
+    puts  "a es menor de b"
+end
+for i in (0..10)
+    puts i
+end
