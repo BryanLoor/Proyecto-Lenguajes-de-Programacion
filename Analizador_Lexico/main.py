@@ -1,3 +1,20 @@
+import ply.lex as lex
+reserved = {
+    "alias": "ALIAS",
+    "and": "AND",
+    "break": "BREAK",
+    "case": "CASE",
+    "while":"WHILE",
+    "end":"END",
+    "do":"DO",
+    "def":"FUNCION",
+    "else":"ELSE",
+    "if":"IF",
+    "or":"OR",
+    "puts":"PUTS",
+    "for":"FOR",
+    "unless":"UNLESS"
+}
 tokens = [
     "VARIABLE_GLOBAL",
     "VARIABLE_LOCAL",
@@ -12,6 +29,8 @@ tokens = [
     "MENOR",
     "MAYOR",
     "CADENA",
+    "POTENCIA",
+    "DIVISION",
     "CIZQ",
     "CDER",
     "ARRAY",
@@ -32,6 +51,8 @@ t_AND=r"&&"
 t_MENOR=r"<"
 t_MAYOR=r">"
 t_CADENA= r'"[a-zA-Z0-9\s]*"'
+t_POTENCIA = r"\*\*"
+t_DIVISION=r"/"
 t_CIZQ = r"\["
 t_CDER = r"\]"
 t_LIZQ = r"\{"
