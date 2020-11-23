@@ -8,6 +8,7 @@ reserved = {
     "do":"DO",
     "def":"FUNCION",
     "else":"ELSE",
+    "in": "IN",
     "if":"IF",
     "puts":"PUTS",
     "for":"FOR",
@@ -52,7 +53,7 @@ t_ENTERO = r"\d+"
 t_RESTA=r"-"
 t_MENOR=r"<"
 t_MAYOR=r">"
-t_CADENA= r'"[a-zA-Z0-9\s]*"'
+t_CADENA= r'"[a-zA-Z0-9\s,]*"'
 t_PROD =r"\*"
 t_POTENCIA = r"\*\*"
 t_DIVISION=r"/"
@@ -118,4 +119,6 @@ archivo3 = open("../archivos/ejemplosAsqui.txt")
 leer(archivo1)
 leer(archivo2)
 leer(archivo3)
+'''
+
 '''
