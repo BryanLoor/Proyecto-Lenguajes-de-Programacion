@@ -118,6 +118,11 @@ def leerAlgoritmo(file):
     print(result)
     file.close()
 
-archivo3 = open("../archivos/algoritmoAsqui.txt")
-leerAlgoritmo(archivo3)
+archivo1 = open("../archivos/algoritmoLoor.txt")
+archivo2 = open("../archivos/algoritmoAsqui.txt")
+'''
+leerAlgoritmo(archivo1)
+leerAlgoritmo(archivo2)
+'''
+
 
