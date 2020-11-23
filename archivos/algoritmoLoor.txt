@@ -1,14 +1,15 @@
+#INICIO del codigo
+
 $suma=0
 Num =10
 $i=0
 $j=0
 while $i < Num do
     $j=$i
-    while $j*2<10 do
+    while ($j*2)<10 do
         $suma=$suma-$i
         $j = $j+1
     end
     $suma=$suma+$i
     $i = $i+1
 end
-

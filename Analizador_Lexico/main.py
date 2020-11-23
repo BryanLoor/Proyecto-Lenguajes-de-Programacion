@@ -12,7 +12,10 @@ reserved = {
     "if":"IF",
     "puts":"PUTS",
     "for":"FOR",
-    "unless":"UNLESS"
+    "unless":"UNLESS",
+    "=begin" :"BEGINC",
+    "=end" :"ENDC"
+
 }
 tokens = [
     "VARIABLE_GLOBAL",
@@ -20,6 +23,7 @@ tokens = [
     "VARIABLE_OBJETO",
     "VARIABLE_CLASE",
     "CONSTANTE",
+    "COMP_IGUAL",
     "IGUAL",
     "DIFERENTE",
     "ENTERO",
@@ -41,12 +45,16 @@ tokens = [
     "RANGO",
     "AND",
     "OR",
-    "PROD"
+    "PROD",
+    "COMENTARIOL"
+
+
 
 ] + list(reserved.values())
 t_AND=r"&&"
 t_OR=r"\|\|"
 t_IGUAL= r"="
+t_COMP_IGUAL=r"=="
 t_DIFERENTE=r"!="
 t_MAS = r"\+"
 t_ENTERO = r"\d+"
@@ -66,6 +74,7 @@ t_PDER = r"\)"
 t_RANGO= r"\.\."
 t_ARRAY = r"\[(('([a-zA-z\s])*'|[0-9]+|[0-9]+,?[0-9]*),?)+\]"
 t_HASH = r"\{((\"|')?[a-zA-Z_][a-zA-Z0-9_\s]*(\"|')?(\:|\=>)([0-9]|[1-9][0-9]*|(\"|')[\w\s]+(\"|')),?)+\}"
+t_COMENTARIOL = r"\#.*"
 
 def t_CONSTANTE(t):
     r"[A-Z][a-zA-Z0-9_]*"
@@ -119,6 +128,4 @@ archivo3 = open("../archivos/ejemplosAsqui.txt")
 leer(archivo1)
 leer(archivo2)
 leer(archivo3)
-'''
-
 '''

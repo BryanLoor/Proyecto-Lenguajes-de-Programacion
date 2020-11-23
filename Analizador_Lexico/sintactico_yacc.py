@@ -14,6 +14,8 @@ p_sentenciaWhile
 p_expresion
 p_operadorComp
 p_variables
+p_comentarioS
+
 '''
 '''Reglas agregadas por Nicole Asqui
 p_sentenciaFor 
@@ -28,12 +30,11 @@ def p_codigo(p):
     '''
 def p_algoritmo(p):
     ''' algoritmo : asignacion
-                    | expresion
-                    | comparacion
                     | sentenciaWHILE
                     | sentenciaFOR
                     | puts
                     | unless
+                    | comentarios
     '''
 
 def p_unless(p):
@@ -56,20 +57,26 @@ def p_sentenciaWhile(p):
     '''sentenciaWHILE : WHILE  comparacion DO codigo END
     '''
 
-
 def p_asignacion(p):
-    '''asignacion : variables IGUAL expresion
-    '''
+    'asignacion : variables IGUAL expresion'
 
 def p_expresion(p):
     '''expresion : valor
+
     '''
 
 def p_expresion_aritmetica(p):
-    'expresion : valor operadorMat expresion'
+    '''expresion : valor operadorMat expresion
+                | PIZQ valor operadorMat expresion PDER
+
+
+    '''
 
 def p_comparacion(p):
-    'comparacion : expresion operadorComp expresion'
+    '''comparacion : expresion operadorComp expresion
+        | PIZQ expresion PDER operadorComp expresion
+    '''
+
 
 def p_operadorMat(p):
     '''operadorMat : MAS
@@ -81,7 +88,7 @@ def p_operadorMat(p):
 def p_operadorComp(p):
     '''operadorComp : MAYOR
                 | MENOR
-                | IGUAL
+                | COMP_IGUAL
                 | DIFERENTE
     '''
 
@@ -101,7 +108,11 @@ def p_variables(p):
                 | VARIABLE_CLASE
                 | CONSTANTE
     """
+def p_comentarios(p):
+    ''' comentarios : COMENTARIOL
 
+
+    '''
 
 # Error rule for syntax errors
 def p_error(p):
@@ -120,9 +131,9 @@ def leerAlgoritmo(file):
 
 archivo1 = open("../archivos/algoritmoLoor.txt")
 archivo2 = open("../archivos/algoritmoAsqui.txt")
-'''
-leerAlgoritmo(archivo1)
-leerAlgoritmo(archivo2)
-'''
+
+#leerAlgoritmo(archivo1)
+#leerAlgoritmo(archivo2)
+
 
 

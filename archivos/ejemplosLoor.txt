@@ -1,8 +1,12 @@
+# INICIO del codigo 123 %&====
+
 while $i < $num do
     $i=$i+1
 end
+8==var
+7!=0
 Const=500
-num0=12-4
+num0=12-4*4
 @num1=15
 @@num2=100
 $num3=120
