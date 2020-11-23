@@ -1,0 +1,14 @@
+for x in 1..5 do
+    for y in 1..5 do
+        puts "Inner loop triggered"
+    end
+    puts "Outer loop triggered"
+end
+
+weight = 90
+unless weight < 85
+  puts "you are overweight, so you need to go on a diet and have plenty of exercise"
+end
+
+options = {font_size:10,font_family:"Arial"}
+person = {name:'Alejandro',last_name:'Romero',age:28}
