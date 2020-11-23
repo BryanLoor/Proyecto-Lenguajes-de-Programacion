@@ -20,6 +20,7 @@ tokens = [
     "VARIABLE_CLASE",
     "CONSTANTE",
     "IGUAL",
+    "DIFERENTE",
     "ENTERO",
     "MAS",
     "RESTA",
@@ -38,18 +39,21 @@ tokens = [
     "PDER",
     "RANGO",
     "AND",
-    "OR"
+    "OR",
+    "PROD"
 
 ] + list(reserved.values())
 t_AND=r"&&"
 t_OR=r"\|\|"
 t_IGUAL= r"="
+t_DIFERENTE=r"!="
 t_MAS = r"\+"
 t_ENTERO = r"\d+"
 t_RESTA=r"-"
 t_MENOR=r"<"
 t_MAYOR=r">"
 t_CADENA= r'"[a-zA-Z0-9\s]*"'
+t_PROD =r"\*"
 t_POTENCIA = r"\*\*"
 t_DIVISION=r"/"
 t_CIZQ = r"\["
@@ -90,6 +94,7 @@ def t_error(t):
     print("No es reconocido '%s'" % t.value[0])
     t.lexer.skip(1)
 lexer = lex.lex()
+
 def analizar(data):
     lexer.input(data)
     # Tokenize
@@ -109,7 +114,8 @@ def leer(file):
 archivo1 = open("../archivos/ejemplosVilcacundo.txt")
 archivo2 = open("../archivos/ejemplosLoor.txt")
 archivo3 = open("../archivos/ejemplosAsqui.txt")
-
+'''
 leer(archivo1)
 leer(archivo2)
 leer(archivo3)
+'''
