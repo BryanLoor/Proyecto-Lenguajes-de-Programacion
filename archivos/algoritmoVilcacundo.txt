@@ -1,0 +1,17 @@
+#INICIO del codigo
+
+src = 7
+if src > 7
+puts "el numero es mayor"
+end
+if src < 7
+puts " el numermo es menor"
+end
+if sc == 7
+puts " el numero es el correcto"
+end
+
+
+muebles = ['Silla','Mesa','Armario']
+
+

@@ -23,6 +23,11 @@ p_range
 p_puts
 p_unless
 '''
+'''Reglas agregadas por Ricardo Vilcacundo
+p-sentenciaIf
+'''
+
+
 
 def p_codigo(p):
     '''codigo : algoritmo
@@ -35,6 +40,7 @@ def p_algoritmo(p):
                     | puts
                     | unless
                     | comentarios
+                    | sentenciaIf
     '''
 
 def p_unless(p):
@@ -98,6 +104,7 @@ def p_valor(p):
                 | variables
                 | CADENA
                 | HASH
+                | ARRAY
 
     '''
 
@@ -108,6 +115,9 @@ def p_variables(p):
                 | VARIABLE_CLASE
                 | CONSTANTE
     """
+def p_sentenciaIf(p):
+    'sentenciaIf : IF comparacion codigo END'
+
 def p_comentarios(p):
     ''' comentarios : COMENTARIOL
 
@@ -131,9 +141,11 @@ def leerAlgoritmo(file):
 
 archivo1 = open("../archivos/algoritmoLoor.txt")
 archivo2 = open("../archivos/algoritmoAsqui.txt")
+archivo3 = open("../archivos/algoritmoVilcacundo.txt")
 
 leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
+leerAlgoritmo(archivo3)
 
 
 
