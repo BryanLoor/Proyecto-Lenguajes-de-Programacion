@@ -1,10 +1,9 @@
-# Yacc example
 
 import ply.yacc as yacc
 
 # Get the token map from the lexer.  This is required.
 
-from  Analizador_Lexico.lexerMain import tokens
+from Analizador_Lexico.lexerMain import tokens
 
 '''Reglas agregadas por Bryan Loor
 p_codigo 
@@ -135,7 +134,7 @@ parser = yacc.yacc()
 def leerCodigo(data):
 
         #print(data)
-        result=parser.parse(data)
+        result = parser.parse(data)
         print(result)
         return result
 
@@ -155,5 +154,3 @@ leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
 leerAlgoritmo(archivo3)
 '''
-
-
