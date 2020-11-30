@@ -112,7 +112,18 @@ def analizar(data):
         tok = lexer.token()
         if not tok:
             break  # No more input
-        print(tok)
+        #print(tok)
+        return tok
+'''
+def leerText(txt):
+    data=txt.split("\n")
+    for linea in data:
+        print(">>")
+        if len(linea)==0:
+            break
+        return analizar(linea)
+'''
+
 
 def leer(file):
     for linea in file:

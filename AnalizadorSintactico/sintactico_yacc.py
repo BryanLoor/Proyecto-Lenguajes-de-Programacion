@@ -4,7 +4,7 @@ import ply.yacc as yacc
 
 # Get the token map from the lexer.  This is required.
 
-from main import tokens
+from  Analizador_Lexico.lexerMain import tokens
 
 '''Reglas agregadas por Bryan Loor
 p_codigo 
@@ -132,20 +132,28 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc()
 
+def leerCodigo(data):
+
+        #print(data)
+        result=parser.parse(data)
+        print(result)
+        return result
+
+'''
 def leerAlgoritmo(file):
     s = file.read()
     print(s)
     result = parser.parse(s)
     print(result)
     file.close()
-
+'''
 archivo1 = open("../archivos/algoritmoLoor.txt")
 archivo2 = open("../archivos/algoritmoAsqui.txt")
 archivo3 = open("../archivos/algoritmoVilcacundo.txt")
-
+'''
 leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
 leerAlgoritmo(archivo3)
-
+'''
 
 

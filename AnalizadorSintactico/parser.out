@@ -1,0 +1,1843 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ALIAS
+    AND
+    BEGINC
+    BREAK
+    CASE
+    CDER
+    CIZQ
+    ELSE
+    ENDC
+    FUNCION
+    LDER
+    LIZQ
+    OR
+
+Grammar
+
+Rule 0     S' -> codigo
+Rule 1     codigo -> algoritmo
+Rule 2     codigo -> algoritmo codigo
+Rule 3     algoritmo -> asignacion
+Rule 4     algoritmo -> sentenciaWHILE
+Rule 5     algoritmo -> sentenciaFOR
+Rule 6     algoritmo -> puts
+Rule 7     algoritmo -> unless
+Rule 8     algoritmo -> comentarios
+Rule 9     algoritmo -> sentenciaIf
+Rule 10    unless -> UNLESS comparacion codigo END
+Rule 11    sentenciaFOR -> FOR variables IN range DO codigo END
+Rule 12    range -> ENTERO RANGO ENTERO
+Rule 13    puts -> PUTS CADENA
+Rule 14    sentenciaWHILE -> WHILE comparacion DO codigo END
+Rule 15    asignacion -> variables IGUAL expresion
+Rule 16    expresion -> valor
+Rule 17    expresion -> valor operadorMat expresion
+Rule 18    expresion -> PIZQ valor operadorMat expresion PDER
+Rule 19    comparacion -> expresion operadorComp expresion
+Rule 20    comparacion -> PIZQ expresion PDER operadorComp expresion
+Rule 21    operadorMat -> MAS
+Rule 22    operadorMat -> RESTA
+Rule 23    operadorMat -> PROD
+Rule 24    operadorMat -> DIVISION
+Rule 25    operadorMat -> POTENCIA
+Rule 26    operadorComp -> MAYOR
+Rule 27    operadorComp -> MENOR
+Rule 28    operadorComp -> COMP_IGUAL
+Rule 29    operadorComp -> DIFERENTE
+Rule 30    valor -> ENTERO
+Rule 31    valor -> variables
+Rule 32    valor -> CADENA
+Rule 33    valor -> HASH
+Rule 34    valor -> ARRAY
+Rule 35    variables -> VARIABLE_LOCAL
+Rule 36    variables -> VARIABLE_GLOBAL
+Rule 37    variables -> VARIABLE_OBJETO
+Rule 38    variables -> VARIABLE_CLASE
+Rule 39    variables -> CONSTANTE
+Rule 40    sentenciaIf -> IF comparacion codigo END
+Rule 41    comentarios -> COMENTARIOL
+
+Terminals, with rules where they appear
+
+ALIAS                : 
+AND                  : 
+ARRAY                : 34
+BEGINC               : 
+BREAK                : 
+CADENA               : 13 32
+CASE                 : 
+CDER                 : 
+CIZQ                 : 
+COMENTARIOL          : 41
+COMP_IGUAL           : 28
+CONSTANTE            : 39
+DIFERENTE            : 29
+DIVISION             : 24
+DO                   : 11 14
+ELSE                 : 
+END                  : 10 11 14 40
+ENDC                 : 
+ENTERO               : 12 12 30
+FOR                  : 11
+FUNCION              : 
+HASH                 : 33
+IF                   : 40
+IGUAL                : 15
+IN                   : 11
+LDER                 : 
+LIZQ                 : 
+MAS                  : 21
+MAYOR                : 26
+MENOR                : 27
+OR                   : 
+PDER                 : 18 20
+PIZQ                 : 18 20
+POTENCIA             : 25
+PROD                 : 23
+PUTS                 : 13
+RANGO                : 12
+RESTA                : 22
+UNLESS               : 10
+VARIABLE_CLASE       : 38
+VARIABLE_GLOBAL      : 36
+VARIABLE_LOCAL       : 35
+VARIABLE_OBJETO      : 37
+WHILE                : 14
+error                : 
+
+Nonterminals, with rules where they appear
+
+algoritmo            : 1 2
+asignacion           : 3
+codigo               : 2 10 11 14 40 0
+comentarios          : 8
+comparacion          : 10 14 40
+expresion            : 15 17 18 19 19 20 20
+operadorComp         : 19 20
+operadorMat          : 17 18
+puts                 : 6
+range                : 11
+sentenciaFOR         : 5
+sentenciaIf          : 9
+sentenciaWHILE       : 4
+unless               : 7
+valor                : 16 17 18
+variables            : 11 15 31
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . codigo
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    codigo                         shift and go to state 1
+    algoritmo                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+    variables                      shift and go to state 10
+
+state 1
+
+    (0) S' -> codigo .
+
+
+
+state 2
+
+    (1) codigo -> algoritmo .
+    (2) codigo -> algoritmo . codigo
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    $end            reduce using rule 1 (codigo -> algoritmo .)
+    END             reduce using rule 1 (codigo -> algoritmo .)
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    algoritmo                      shift and go to state 2
+    codigo                         shift and go to state 22
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+    variables                      shift and go to state 10
+
+state 3
+
+    (3) algoritmo -> asignacion .
+
+    WHILE           reduce using rule 3 (algoritmo -> asignacion .)
+    FOR             reduce using rule 3 (algoritmo -> asignacion .)
+    PUTS            reduce using rule 3 (algoritmo -> asignacion .)
+    UNLESS          reduce using rule 3 (algoritmo -> asignacion .)
+    COMENTARIOL     reduce using rule 3 (algoritmo -> asignacion .)
+    IF              reduce using rule 3 (algoritmo -> asignacion .)
+    VARIABLE_LOCAL  reduce using rule 3 (algoritmo -> asignacion .)
+    VARIABLE_GLOBAL reduce using rule 3 (algoritmo -> asignacion .)
+    VARIABLE_OBJETO reduce using rule 3 (algoritmo -> asignacion .)
+    VARIABLE_CLASE  reduce using rule 3 (algoritmo -> asignacion .)
+    CONSTANTE       reduce using rule 3 (algoritmo -> asignacion .)
+    $end            reduce using rule 3 (algoritmo -> asignacion .)
+    END             reduce using rule 3 (algoritmo -> asignacion .)
+
+
+state 4
+
+    (4) algoritmo -> sentenciaWHILE .
+
+    WHILE           reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    FOR             reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    PUTS            reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    UNLESS          reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    COMENTARIOL     reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    IF              reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    VARIABLE_LOCAL  reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    VARIABLE_GLOBAL reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    VARIABLE_OBJETO reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    VARIABLE_CLASE  reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    CONSTANTE       reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    $end            reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+    END             reduce using rule 4 (algoritmo -> sentenciaWHILE .)
+
+
+state 5
+
+    (5) algoritmo -> sentenciaFOR .
+
+    WHILE           reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    FOR             reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    PUTS            reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    UNLESS          reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    COMENTARIOL     reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    IF              reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    VARIABLE_LOCAL  reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    VARIABLE_GLOBAL reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    VARIABLE_OBJETO reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    VARIABLE_CLASE  reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    CONSTANTE       reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    $end            reduce using rule 5 (algoritmo -> sentenciaFOR .)
+    END             reduce using rule 5 (algoritmo -> sentenciaFOR .)
+
+
+state 6
+
+    (6) algoritmo -> puts .
+
+    WHILE           reduce using rule 6 (algoritmo -> puts .)
+    FOR             reduce using rule 6 (algoritmo -> puts .)
+    PUTS            reduce using rule 6 (algoritmo -> puts .)
+    UNLESS          reduce using rule 6 (algoritmo -> puts .)
+    COMENTARIOL     reduce using rule 6 (algoritmo -> puts .)
+    IF              reduce using rule 6 (algoritmo -> puts .)
+    VARIABLE_LOCAL  reduce using rule 6 (algoritmo -> puts .)
+    VARIABLE_GLOBAL reduce using rule 6 (algoritmo -> puts .)
+    VARIABLE_OBJETO reduce using rule 6 (algoritmo -> puts .)
+    VARIABLE_CLASE  reduce using rule 6 (algoritmo -> puts .)
+    CONSTANTE       reduce using rule 6 (algoritmo -> puts .)
+    $end            reduce using rule 6 (algoritmo -> puts .)
+    END             reduce using rule 6 (algoritmo -> puts .)
+
+
+state 7
+
+    (7) algoritmo -> unless .
+
+    WHILE           reduce using rule 7 (algoritmo -> unless .)
+    FOR             reduce using rule 7 (algoritmo -> unless .)
+    PUTS            reduce using rule 7 (algoritmo -> unless .)
+    UNLESS          reduce using rule 7 (algoritmo -> unless .)
+    COMENTARIOL     reduce using rule 7 (algoritmo -> unless .)
+    IF              reduce using rule 7 (algoritmo -> unless .)
+    VARIABLE_LOCAL  reduce using rule 7 (algoritmo -> unless .)
+    VARIABLE_GLOBAL reduce using rule 7 (algoritmo -> unless .)
+    VARIABLE_OBJETO reduce using rule 7 (algoritmo -> unless .)
+    VARIABLE_CLASE  reduce using rule 7 (algoritmo -> unless .)
+    CONSTANTE       reduce using rule 7 (algoritmo -> unless .)
+    $end            reduce using rule 7 (algoritmo -> unless .)
+    END             reduce using rule 7 (algoritmo -> unless .)
+
+
+state 8
+
+    (8) algoritmo -> comentarios .
+
+    WHILE           reduce using rule 8 (algoritmo -> comentarios .)
+    FOR             reduce using rule 8 (algoritmo -> comentarios .)
+    PUTS            reduce using rule 8 (algoritmo -> comentarios .)
+    UNLESS          reduce using rule 8 (algoritmo -> comentarios .)
+    COMENTARIOL     reduce using rule 8 (algoritmo -> comentarios .)
+    IF              reduce using rule 8 (algoritmo -> comentarios .)
+    VARIABLE_LOCAL  reduce using rule 8 (algoritmo -> comentarios .)
+    VARIABLE_GLOBAL reduce using rule 8 (algoritmo -> comentarios .)
+    VARIABLE_OBJETO reduce using rule 8 (algoritmo -> comentarios .)
+    VARIABLE_CLASE  reduce using rule 8 (algoritmo -> comentarios .)
+    CONSTANTE       reduce using rule 8 (algoritmo -> comentarios .)
+    $end            reduce using rule 8 (algoritmo -> comentarios .)
+    END             reduce using rule 8 (algoritmo -> comentarios .)
+
+
+state 9
+
+    (9) algoritmo -> sentenciaIf .
+
+    WHILE           reduce using rule 9 (algoritmo -> sentenciaIf .)
+    FOR             reduce using rule 9 (algoritmo -> sentenciaIf .)
+    PUTS            reduce using rule 9 (algoritmo -> sentenciaIf .)
+    UNLESS          reduce using rule 9 (algoritmo -> sentenciaIf .)
+    COMENTARIOL     reduce using rule 9 (algoritmo -> sentenciaIf .)
+    IF              reduce using rule 9 (algoritmo -> sentenciaIf .)
+    VARIABLE_LOCAL  reduce using rule 9 (algoritmo -> sentenciaIf .)
+    VARIABLE_GLOBAL reduce using rule 9 (algoritmo -> sentenciaIf .)
+    VARIABLE_OBJETO reduce using rule 9 (algoritmo -> sentenciaIf .)
+    VARIABLE_CLASE  reduce using rule 9 (algoritmo -> sentenciaIf .)
+    CONSTANTE       reduce using rule 9 (algoritmo -> sentenciaIf .)
+    $end            reduce using rule 9 (algoritmo -> sentenciaIf .)
+    END             reduce using rule 9 (algoritmo -> sentenciaIf .)
+
+
+state 10
+
+    (15) asignacion -> variables . IGUAL expresion
+
+    IGUAL           shift and go to state 23
+
+
+state 11
+
+    (14) sentenciaWHILE -> WHILE . comparacion DO codigo END
+    (19) comparacion -> . expresion operadorComp expresion
+    (20) comparacion -> . PIZQ expresion PDER operadorComp expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 26
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    comparacion                    shift and go to state 24
+    expresion                      shift and go to state 25
+    valor                          shift and go to state 27
+    variables                      shift and go to state 29
+
+state 12
+
+    (11) sentenciaFOR -> FOR . variables IN range DO codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    variables                      shift and go to state 33
+
+state 13
+
+    (13) puts -> PUTS . CADENA
+
+    CADENA          shift and go to state 34
+
+
+state 14
+
+    (10) unless -> UNLESS . comparacion codigo END
+    (19) comparacion -> . expresion operadorComp expresion
+    (20) comparacion -> . PIZQ expresion PDER operadorComp expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 26
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    comparacion                    shift and go to state 35
+    expresion                      shift and go to state 25
+    valor                          shift and go to state 27
+    variables                      shift and go to state 29
+
+state 15
+
+    (41) comentarios -> COMENTARIOL .
+
+    WHILE           reduce using rule 41 (comentarios -> COMENTARIOL .)
+    FOR             reduce using rule 41 (comentarios -> COMENTARIOL .)
+    PUTS            reduce using rule 41 (comentarios -> COMENTARIOL .)
+    UNLESS          reduce using rule 41 (comentarios -> COMENTARIOL .)
+    COMENTARIOL     reduce using rule 41 (comentarios -> COMENTARIOL .)
+    IF              reduce using rule 41 (comentarios -> COMENTARIOL .)
+    VARIABLE_LOCAL  reduce using rule 41 (comentarios -> COMENTARIOL .)
+    VARIABLE_GLOBAL reduce using rule 41 (comentarios -> COMENTARIOL .)
+    VARIABLE_OBJETO reduce using rule 41 (comentarios -> COMENTARIOL .)
+    VARIABLE_CLASE  reduce using rule 41 (comentarios -> COMENTARIOL .)
+    CONSTANTE       reduce using rule 41 (comentarios -> COMENTARIOL .)
+    $end            reduce using rule 41 (comentarios -> COMENTARIOL .)
+    END             reduce using rule 41 (comentarios -> COMENTARIOL .)
+
+
+state 16
+
+    (40) sentenciaIf -> IF . comparacion codigo END
+    (19) comparacion -> . expresion operadorComp expresion
+    (20) comparacion -> . PIZQ expresion PDER operadorComp expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 26
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    comparacion                    shift and go to state 36
+    expresion                      shift and go to state 25
+    valor                          shift and go to state 27
+    variables                      shift and go to state 29
+
+state 17
+
+    (35) variables -> VARIABLE_LOCAL .
+
+    IGUAL           reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    MAS             reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    RESTA           reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    PROD            reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    DIVISION        reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    POTENCIA        reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    MAYOR           reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    MENOR           reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    COMP_IGUAL      reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    DIFERENTE       reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    IN              reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    WHILE           reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    FOR             reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    PUTS            reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    UNLESS          reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    COMENTARIOL     reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    IF              reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    VARIABLE_LOCAL  reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    VARIABLE_GLOBAL reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    VARIABLE_OBJETO reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    VARIABLE_CLASE  reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    CONSTANTE       reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    $end            reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    END             reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    PDER            reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+    DO              reduce using rule 35 (variables -> VARIABLE_LOCAL .)
+
+
+state 18
+
+    (36) variables -> VARIABLE_GLOBAL .
+
+    IGUAL           reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    MAS             reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    RESTA           reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    PROD            reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    DIVISION        reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    POTENCIA        reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    MAYOR           reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    MENOR           reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    COMP_IGUAL      reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    DIFERENTE       reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    IN              reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    WHILE           reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    FOR             reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    PUTS            reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    UNLESS          reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    COMENTARIOL     reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    IF              reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    VARIABLE_LOCAL  reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    VARIABLE_GLOBAL reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    VARIABLE_OBJETO reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    VARIABLE_CLASE  reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    CONSTANTE       reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    $end            reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    END             reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    PDER            reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+    DO              reduce using rule 36 (variables -> VARIABLE_GLOBAL .)
+
+
+state 19
+
+    (37) variables -> VARIABLE_OBJETO .
+
+    IGUAL           reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    MAS             reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    RESTA           reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    PROD            reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    DIVISION        reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    POTENCIA        reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    MAYOR           reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    MENOR           reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    COMP_IGUAL      reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    DIFERENTE       reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    IN              reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    WHILE           reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    FOR             reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    PUTS            reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    UNLESS          reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    COMENTARIOL     reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    IF              reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    VARIABLE_LOCAL  reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    VARIABLE_GLOBAL reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    VARIABLE_OBJETO reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    VARIABLE_CLASE  reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    CONSTANTE       reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    $end            reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    END             reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    PDER            reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+    DO              reduce using rule 37 (variables -> VARIABLE_OBJETO .)
+
+
+state 20
+
+    (38) variables -> VARIABLE_CLASE .
+
+    IGUAL           reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    MAS             reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    RESTA           reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    PROD            reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    DIVISION        reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    POTENCIA        reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    MAYOR           reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    MENOR           reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    COMP_IGUAL      reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    DIFERENTE       reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    IN              reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    WHILE           reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    FOR             reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    PUTS            reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    UNLESS          reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    COMENTARIOL     reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    IF              reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    VARIABLE_LOCAL  reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    VARIABLE_GLOBAL reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    VARIABLE_OBJETO reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    VARIABLE_CLASE  reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    CONSTANTE       reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    $end            reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    END             reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    PDER            reduce using rule 38 (variables -> VARIABLE_CLASE .)
+    DO              reduce using rule 38 (variables -> VARIABLE_CLASE .)
+
+
+state 21
+
+    (39) variables -> CONSTANTE .
+
+    IGUAL           reduce using rule 39 (variables -> CONSTANTE .)
+    MAS             reduce using rule 39 (variables -> CONSTANTE .)
+    RESTA           reduce using rule 39 (variables -> CONSTANTE .)
+    PROD            reduce using rule 39 (variables -> CONSTANTE .)
+    DIVISION        reduce using rule 39 (variables -> CONSTANTE .)
+    POTENCIA        reduce using rule 39 (variables -> CONSTANTE .)
+    MAYOR           reduce using rule 39 (variables -> CONSTANTE .)
+    MENOR           reduce using rule 39 (variables -> CONSTANTE .)
+    COMP_IGUAL      reduce using rule 39 (variables -> CONSTANTE .)
+    DIFERENTE       reduce using rule 39 (variables -> CONSTANTE .)
+    IN              reduce using rule 39 (variables -> CONSTANTE .)
+    WHILE           reduce using rule 39 (variables -> CONSTANTE .)
+    FOR             reduce using rule 39 (variables -> CONSTANTE .)
+    PUTS            reduce using rule 39 (variables -> CONSTANTE .)
+    UNLESS          reduce using rule 39 (variables -> CONSTANTE .)
+    COMENTARIOL     reduce using rule 39 (variables -> CONSTANTE .)
+    IF              reduce using rule 39 (variables -> CONSTANTE .)
+    VARIABLE_LOCAL  reduce using rule 39 (variables -> CONSTANTE .)
+    VARIABLE_GLOBAL reduce using rule 39 (variables -> CONSTANTE .)
+    VARIABLE_OBJETO reduce using rule 39 (variables -> CONSTANTE .)
+    VARIABLE_CLASE  reduce using rule 39 (variables -> CONSTANTE .)
+    CONSTANTE       reduce using rule 39 (variables -> CONSTANTE .)
+    $end            reduce using rule 39 (variables -> CONSTANTE .)
+    END             reduce using rule 39 (variables -> CONSTANTE .)
+    PDER            reduce using rule 39 (variables -> CONSTANTE .)
+    DO              reduce using rule 39 (variables -> CONSTANTE .)
+
+
+state 22
+
+    (2) codigo -> algoritmo codigo .
+
+    $end            reduce using rule 2 (codigo -> algoritmo codigo .)
+    END             reduce using rule 2 (codigo -> algoritmo codigo .)
+
+
+state 23
+
+    (15) asignacion -> variables IGUAL . expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    variables                      shift and go to state 29
+    expresion                      shift and go to state 37
+    valor                          shift and go to state 27
+
+state 24
+
+    (14) sentenciaWHILE -> WHILE comparacion . DO codigo END
+
+    DO              shift and go to state 39
+
+
+state 25
+
+    (19) comparacion -> expresion . operadorComp expresion
+    (26) operadorComp -> . MAYOR
+    (27) operadorComp -> . MENOR
+    (28) operadorComp -> . COMP_IGUAL
+    (29) operadorComp -> . DIFERENTE
+
+    MAYOR           shift and go to state 41
+    MENOR           shift and go to state 42
+    COMP_IGUAL      shift and go to state 43
+    DIFERENTE       shift and go to state 44
+
+    operadorComp                   shift and go to state 40
+
+state 26
+
+    (20) comparacion -> PIZQ . expresion PDER operadorComp expresion
+    (18) expresion -> PIZQ . valor operadorMat expresion PDER
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    expresion                      shift and go to state 45
+    valor                          shift and go to state 46
+    variables                      shift and go to state 29
+
+state 27
+
+    (16) expresion -> valor .
+    (17) expresion -> valor . operadorMat expresion
+    (21) operadorMat -> . MAS
+    (22) operadorMat -> . RESTA
+    (23) operadorMat -> . PROD
+    (24) operadorMat -> . DIVISION
+    (25) operadorMat -> . POTENCIA
+
+    MAYOR           reduce using rule 16 (expresion -> valor .)
+    MENOR           reduce using rule 16 (expresion -> valor .)
+    COMP_IGUAL      reduce using rule 16 (expresion -> valor .)
+    DIFERENTE       reduce using rule 16 (expresion -> valor .)
+    WHILE           reduce using rule 16 (expresion -> valor .)
+    FOR             reduce using rule 16 (expresion -> valor .)
+    PUTS            reduce using rule 16 (expresion -> valor .)
+    UNLESS          reduce using rule 16 (expresion -> valor .)
+    COMENTARIOL     reduce using rule 16 (expresion -> valor .)
+    IF              reduce using rule 16 (expresion -> valor .)
+    VARIABLE_LOCAL  reduce using rule 16 (expresion -> valor .)
+    VARIABLE_GLOBAL reduce using rule 16 (expresion -> valor .)
+    VARIABLE_OBJETO reduce using rule 16 (expresion -> valor .)
+    VARIABLE_CLASE  reduce using rule 16 (expresion -> valor .)
+    CONSTANTE       reduce using rule 16 (expresion -> valor .)
+    $end            reduce using rule 16 (expresion -> valor .)
+    END             reduce using rule 16 (expresion -> valor .)
+    DO              reduce using rule 16 (expresion -> valor .)
+    PDER            reduce using rule 16 (expresion -> valor .)
+    MAS             shift and go to state 48
+    RESTA           shift and go to state 49
+    PROD            shift and go to state 50
+    DIVISION        shift and go to state 51
+    POTENCIA        shift and go to state 52
+
+    operadorMat                    shift and go to state 47
+
+state 28
+
+    (30) valor -> ENTERO .
+
+    MAS             reduce using rule 30 (valor -> ENTERO .)
+    RESTA           reduce using rule 30 (valor -> ENTERO .)
+    PROD            reduce using rule 30 (valor -> ENTERO .)
+    DIVISION        reduce using rule 30 (valor -> ENTERO .)
+    POTENCIA        reduce using rule 30 (valor -> ENTERO .)
+    MAYOR           reduce using rule 30 (valor -> ENTERO .)
+    MENOR           reduce using rule 30 (valor -> ENTERO .)
+    COMP_IGUAL      reduce using rule 30 (valor -> ENTERO .)
+    DIFERENTE       reduce using rule 30 (valor -> ENTERO .)
+    WHILE           reduce using rule 30 (valor -> ENTERO .)
+    FOR             reduce using rule 30 (valor -> ENTERO .)
+    PUTS            reduce using rule 30 (valor -> ENTERO .)
+    UNLESS          reduce using rule 30 (valor -> ENTERO .)
+    COMENTARIOL     reduce using rule 30 (valor -> ENTERO .)
+    IF              reduce using rule 30 (valor -> ENTERO .)
+    VARIABLE_LOCAL  reduce using rule 30 (valor -> ENTERO .)
+    VARIABLE_GLOBAL reduce using rule 30 (valor -> ENTERO .)
+    VARIABLE_OBJETO reduce using rule 30 (valor -> ENTERO .)
+    VARIABLE_CLASE  reduce using rule 30 (valor -> ENTERO .)
+    CONSTANTE       reduce using rule 30 (valor -> ENTERO .)
+    $end            reduce using rule 30 (valor -> ENTERO .)
+    END             reduce using rule 30 (valor -> ENTERO .)
+    PDER            reduce using rule 30 (valor -> ENTERO .)
+    DO              reduce using rule 30 (valor -> ENTERO .)
+
+
+state 29
+
+    (31) valor -> variables .
+
+    MAS             reduce using rule 31 (valor -> variables .)
+    RESTA           reduce using rule 31 (valor -> variables .)
+    PROD            reduce using rule 31 (valor -> variables .)
+    DIVISION        reduce using rule 31 (valor -> variables .)
+    POTENCIA        reduce using rule 31 (valor -> variables .)
+    MAYOR           reduce using rule 31 (valor -> variables .)
+    MENOR           reduce using rule 31 (valor -> variables .)
+    COMP_IGUAL      reduce using rule 31 (valor -> variables .)
+    DIFERENTE       reduce using rule 31 (valor -> variables .)
+    WHILE           reduce using rule 31 (valor -> variables .)
+    FOR             reduce using rule 31 (valor -> variables .)
+    PUTS            reduce using rule 31 (valor -> variables .)
+    UNLESS          reduce using rule 31 (valor -> variables .)
+    COMENTARIOL     reduce using rule 31 (valor -> variables .)
+    IF              reduce using rule 31 (valor -> variables .)
+    VARIABLE_LOCAL  reduce using rule 31 (valor -> variables .)
+    VARIABLE_GLOBAL reduce using rule 31 (valor -> variables .)
+    VARIABLE_OBJETO reduce using rule 31 (valor -> variables .)
+    VARIABLE_CLASE  reduce using rule 31 (valor -> variables .)
+    CONSTANTE       reduce using rule 31 (valor -> variables .)
+    $end            reduce using rule 31 (valor -> variables .)
+    END             reduce using rule 31 (valor -> variables .)
+    PDER            reduce using rule 31 (valor -> variables .)
+    DO              reduce using rule 31 (valor -> variables .)
+
+
+state 30
+
+    (32) valor -> CADENA .
+
+    MAS             reduce using rule 32 (valor -> CADENA .)
+    RESTA           reduce using rule 32 (valor -> CADENA .)
+    PROD            reduce using rule 32 (valor -> CADENA .)
+    DIVISION        reduce using rule 32 (valor -> CADENA .)
+    POTENCIA        reduce using rule 32 (valor -> CADENA .)
+    MAYOR           reduce using rule 32 (valor -> CADENA .)
+    MENOR           reduce using rule 32 (valor -> CADENA .)
+    COMP_IGUAL      reduce using rule 32 (valor -> CADENA .)
+    DIFERENTE       reduce using rule 32 (valor -> CADENA .)
+    WHILE           reduce using rule 32 (valor -> CADENA .)
+    FOR             reduce using rule 32 (valor -> CADENA .)
+    PUTS            reduce using rule 32 (valor -> CADENA .)
+    UNLESS          reduce using rule 32 (valor -> CADENA .)
+    COMENTARIOL     reduce using rule 32 (valor -> CADENA .)
+    IF              reduce using rule 32 (valor -> CADENA .)
+    VARIABLE_LOCAL  reduce using rule 32 (valor -> CADENA .)
+    VARIABLE_GLOBAL reduce using rule 32 (valor -> CADENA .)
+    VARIABLE_OBJETO reduce using rule 32 (valor -> CADENA .)
+    VARIABLE_CLASE  reduce using rule 32 (valor -> CADENA .)
+    CONSTANTE       reduce using rule 32 (valor -> CADENA .)
+    $end            reduce using rule 32 (valor -> CADENA .)
+    END             reduce using rule 32 (valor -> CADENA .)
+    PDER            reduce using rule 32 (valor -> CADENA .)
+    DO              reduce using rule 32 (valor -> CADENA .)
+
+
+state 31
+
+    (33) valor -> HASH .
+
+    MAS             reduce using rule 33 (valor -> HASH .)
+    RESTA           reduce using rule 33 (valor -> HASH .)
+    PROD            reduce using rule 33 (valor -> HASH .)
+    DIVISION        reduce using rule 33 (valor -> HASH .)
+    POTENCIA        reduce using rule 33 (valor -> HASH .)
+    MAYOR           reduce using rule 33 (valor -> HASH .)
+    MENOR           reduce using rule 33 (valor -> HASH .)
+    COMP_IGUAL      reduce using rule 33 (valor -> HASH .)
+    DIFERENTE       reduce using rule 33 (valor -> HASH .)
+    WHILE           reduce using rule 33 (valor -> HASH .)
+    FOR             reduce using rule 33 (valor -> HASH .)
+    PUTS            reduce using rule 33 (valor -> HASH .)
+    UNLESS          reduce using rule 33 (valor -> HASH .)
+    COMENTARIOL     reduce using rule 33 (valor -> HASH .)
+    IF              reduce using rule 33 (valor -> HASH .)
+    VARIABLE_LOCAL  reduce using rule 33 (valor -> HASH .)
+    VARIABLE_GLOBAL reduce using rule 33 (valor -> HASH .)
+    VARIABLE_OBJETO reduce using rule 33 (valor -> HASH .)
+    VARIABLE_CLASE  reduce using rule 33 (valor -> HASH .)
+    CONSTANTE       reduce using rule 33 (valor -> HASH .)
+    $end            reduce using rule 33 (valor -> HASH .)
+    END             reduce using rule 33 (valor -> HASH .)
+    PDER            reduce using rule 33 (valor -> HASH .)
+    DO              reduce using rule 33 (valor -> HASH .)
+
+
+state 32
+
+    (34) valor -> ARRAY .
+
+    MAS             reduce using rule 34 (valor -> ARRAY .)
+    RESTA           reduce using rule 34 (valor -> ARRAY .)
+    PROD            reduce using rule 34 (valor -> ARRAY .)
+    DIVISION        reduce using rule 34 (valor -> ARRAY .)
+    POTENCIA        reduce using rule 34 (valor -> ARRAY .)
+    MAYOR           reduce using rule 34 (valor -> ARRAY .)
+    MENOR           reduce using rule 34 (valor -> ARRAY .)
+    COMP_IGUAL      reduce using rule 34 (valor -> ARRAY .)
+    DIFERENTE       reduce using rule 34 (valor -> ARRAY .)
+    WHILE           reduce using rule 34 (valor -> ARRAY .)
+    FOR             reduce using rule 34 (valor -> ARRAY .)
+    PUTS            reduce using rule 34 (valor -> ARRAY .)
+    UNLESS          reduce using rule 34 (valor -> ARRAY .)
+    COMENTARIOL     reduce using rule 34 (valor -> ARRAY .)
+    IF              reduce using rule 34 (valor -> ARRAY .)
+    VARIABLE_LOCAL  reduce using rule 34 (valor -> ARRAY .)
+    VARIABLE_GLOBAL reduce using rule 34 (valor -> ARRAY .)
+    VARIABLE_OBJETO reduce using rule 34 (valor -> ARRAY .)
+    VARIABLE_CLASE  reduce using rule 34 (valor -> ARRAY .)
+    CONSTANTE       reduce using rule 34 (valor -> ARRAY .)
+    $end            reduce using rule 34 (valor -> ARRAY .)
+    END             reduce using rule 34 (valor -> ARRAY .)
+    PDER            reduce using rule 34 (valor -> ARRAY .)
+    DO              reduce using rule 34 (valor -> ARRAY .)
+
+
+state 33
+
+    (11) sentenciaFOR -> FOR variables . IN range DO codigo END
+
+    IN              shift and go to state 53
+
+
+state 34
+
+    (13) puts -> PUTS CADENA .
+
+    WHILE           reduce using rule 13 (puts -> PUTS CADENA .)
+    FOR             reduce using rule 13 (puts -> PUTS CADENA .)
+    PUTS            reduce using rule 13 (puts -> PUTS CADENA .)
+    UNLESS          reduce using rule 13 (puts -> PUTS CADENA .)
+    COMENTARIOL     reduce using rule 13 (puts -> PUTS CADENA .)
+    IF              reduce using rule 13 (puts -> PUTS CADENA .)
+    VARIABLE_LOCAL  reduce using rule 13 (puts -> PUTS CADENA .)
+    VARIABLE_GLOBAL reduce using rule 13 (puts -> PUTS CADENA .)
+    VARIABLE_OBJETO reduce using rule 13 (puts -> PUTS CADENA .)
+    VARIABLE_CLASE  reduce using rule 13 (puts -> PUTS CADENA .)
+    CONSTANTE       reduce using rule 13 (puts -> PUTS CADENA .)
+    $end            reduce using rule 13 (puts -> PUTS CADENA .)
+    END             reduce using rule 13 (puts -> PUTS CADENA .)
+
+
+state 35
+
+    (10) unless -> UNLESS comparacion . codigo END
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    codigo                         shift and go to state 54
+    algoritmo                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+    variables                      shift and go to state 10
+
+state 36
+
+    (40) sentenciaIf -> IF comparacion . codigo END
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    codigo                         shift and go to state 55
+    algoritmo                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+    variables                      shift and go to state 10
+
+state 37
+
+    (15) asignacion -> variables IGUAL expresion .
+
+    WHILE           reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    FOR             reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    PUTS            reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    UNLESS          reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    COMENTARIOL     reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    IF              reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    VARIABLE_LOCAL  reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    VARIABLE_GLOBAL reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    VARIABLE_OBJETO reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    VARIABLE_CLASE  reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    CONSTANTE       reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    $end            reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+    END             reduce using rule 15 (asignacion -> variables IGUAL expresion .)
+
+
+state 38
+
+    (18) expresion -> PIZQ . valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    valor                          shift and go to state 56
+    variables                      shift and go to state 29
+
+state 39
+
+    (14) sentenciaWHILE -> WHILE comparacion DO . codigo END
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    codigo                         shift and go to state 57
+    algoritmo                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+    variables                      shift and go to state 10
+
+state 40
+
+    (19) comparacion -> expresion operadorComp . expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    expresion                      shift and go to state 58
+    valor                          shift and go to state 27
+    variables                      shift and go to state 29
+
+state 41
+
+    (26) operadorComp -> MAYOR .
+
+    PIZQ            reduce using rule 26 (operadorComp -> MAYOR .)
+    ENTERO          reduce using rule 26 (operadorComp -> MAYOR .)
+    CADENA          reduce using rule 26 (operadorComp -> MAYOR .)
+    HASH            reduce using rule 26 (operadorComp -> MAYOR .)
+    ARRAY           reduce using rule 26 (operadorComp -> MAYOR .)
+    VARIABLE_LOCAL  reduce using rule 26 (operadorComp -> MAYOR .)
+    VARIABLE_GLOBAL reduce using rule 26 (operadorComp -> MAYOR .)
+    VARIABLE_OBJETO reduce using rule 26 (operadorComp -> MAYOR .)
+    VARIABLE_CLASE  reduce using rule 26 (operadorComp -> MAYOR .)
+    CONSTANTE       reduce using rule 26 (operadorComp -> MAYOR .)
+
+
+state 42
+
+    (27) operadorComp -> MENOR .
+
+    PIZQ            reduce using rule 27 (operadorComp -> MENOR .)
+    ENTERO          reduce using rule 27 (operadorComp -> MENOR .)
+    CADENA          reduce using rule 27 (operadorComp -> MENOR .)
+    HASH            reduce using rule 27 (operadorComp -> MENOR .)
+    ARRAY           reduce using rule 27 (operadorComp -> MENOR .)
+    VARIABLE_LOCAL  reduce using rule 27 (operadorComp -> MENOR .)
+    VARIABLE_GLOBAL reduce using rule 27 (operadorComp -> MENOR .)
+    VARIABLE_OBJETO reduce using rule 27 (operadorComp -> MENOR .)
+    VARIABLE_CLASE  reduce using rule 27 (operadorComp -> MENOR .)
+    CONSTANTE       reduce using rule 27 (operadorComp -> MENOR .)
+
+
+state 43
+
+    (28) operadorComp -> COMP_IGUAL .
+
+    PIZQ            reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    ENTERO          reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    CADENA          reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    HASH            reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    ARRAY           reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    VARIABLE_LOCAL  reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    VARIABLE_GLOBAL reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    VARIABLE_OBJETO reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    VARIABLE_CLASE  reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+    CONSTANTE       reduce using rule 28 (operadorComp -> COMP_IGUAL .)
+
+
+state 44
+
+    (29) operadorComp -> DIFERENTE .
+
+    PIZQ            reduce using rule 29 (operadorComp -> DIFERENTE .)
+    ENTERO          reduce using rule 29 (operadorComp -> DIFERENTE .)
+    CADENA          reduce using rule 29 (operadorComp -> DIFERENTE .)
+    HASH            reduce using rule 29 (operadorComp -> DIFERENTE .)
+    ARRAY           reduce using rule 29 (operadorComp -> DIFERENTE .)
+    VARIABLE_LOCAL  reduce using rule 29 (operadorComp -> DIFERENTE .)
+    VARIABLE_GLOBAL reduce using rule 29 (operadorComp -> DIFERENTE .)
+    VARIABLE_OBJETO reduce using rule 29 (operadorComp -> DIFERENTE .)
+    VARIABLE_CLASE  reduce using rule 29 (operadorComp -> DIFERENTE .)
+    CONSTANTE       reduce using rule 29 (operadorComp -> DIFERENTE .)
+
+
+state 45
+
+    (20) comparacion -> PIZQ expresion . PDER operadorComp expresion
+
+    PDER            shift and go to state 59
+
+
+state 46
+
+    (18) expresion -> PIZQ valor . operadorMat expresion PDER
+    (16) expresion -> valor .
+    (17) expresion -> valor . operadorMat expresion
+    (21) operadorMat -> . MAS
+    (22) operadorMat -> . RESTA
+    (23) operadorMat -> . PROD
+    (24) operadorMat -> . DIVISION
+    (25) operadorMat -> . POTENCIA
+
+    PDER            reduce using rule 16 (expresion -> valor .)
+    MAS             shift and go to state 48
+    RESTA           shift and go to state 49
+    PROD            shift and go to state 50
+    DIVISION        shift and go to state 51
+    POTENCIA        shift and go to state 52
+
+    operadorMat                    shift and go to state 60
+
+state 47
+
+    (17) expresion -> valor operadorMat . expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    valor                          shift and go to state 27
+    expresion                      shift and go to state 61
+    variables                      shift and go to state 29
+
+state 48
+
+    (21) operadorMat -> MAS .
+
+    PIZQ            reduce using rule 21 (operadorMat -> MAS .)
+    ENTERO          reduce using rule 21 (operadorMat -> MAS .)
+    CADENA          reduce using rule 21 (operadorMat -> MAS .)
+    HASH            reduce using rule 21 (operadorMat -> MAS .)
+    ARRAY           reduce using rule 21 (operadorMat -> MAS .)
+    VARIABLE_LOCAL  reduce using rule 21 (operadorMat -> MAS .)
+    VARIABLE_GLOBAL reduce using rule 21 (operadorMat -> MAS .)
+    VARIABLE_OBJETO reduce using rule 21 (operadorMat -> MAS .)
+    VARIABLE_CLASE  reduce using rule 21 (operadorMat -> MAS .)
+    CONSTANTE       reduce using rule 21 (operadorMat -> MAS .)
+
+
+state 49
+
+    (22) operadorMat -> RESTA .
+
+    PIZQ            reduce using rule 22 (operadorMat -> RESTA .)
+    ENTERO          reduce using rule 22 (operadorMat -> RESTA .)
+    CADENA          reduce using rule 22 (operadorMat -> RESTA .)
+    HASH            reduce using rule 22 (operadorMat -> RESTA .)
+    ARRAY           reduce using rule 22 (operadorMat -> RESTA .)
+    VARIABLE_LOCAL  reduce using rule 22 (operadorMat -> RESTA .)
+    VARIABLE_GLOBAL reduce using rule 22 (operadorMat -> RESTA .)
+    VARIABLE_OBJETO reduce using rule 22 (operadorMat -> RESTA .)
+    VARIABLE_CLASE  reduce using rule 22 (operadorMat -> RESTA .)
+    CONSTANTE       reduce using rule 22 (operadorMat -> RESTA .)
+
+
+state 50
+
+    (23) operadorMat -> PROD .
+
+    PIZQ            reduce using rule 23 (operadorMat -> PROD .)
+    ENTERO          reduce using rule 23 (operadorMat -> PROD .)
+    CADENA          reduce using rule 23 (operadorMat -> PROD .)
+    HASH            reduce using rule 23 (operadorMat -> PROD .)
+    ARRAY           reduce using rule 23 (operadorMat -> PROD .)
+    VARIABLE_LOCAL  reduce using rule 23 (operadorMat -> PROD .)
+    VARIABLE_GLOBAL reduce using rule 23 (operadorMat -> PROD .)
+    VARIABLE_OBJETO reduce using rule 23 (operadorMat -> PROD .)
+    VARIABLE_CLASE  reduce using rule 23 (operadorMat -> PROD .)
+    CONSTANTE       reduce using rule 23 (operadorMat -> PROD .)
+
+
+state 51
+
+    (24) operadorMat -> DIVISION .
+
+    PIZQ            reduce using rule 24 (operadorMat -> DIVISION .)
+    ENTERO          reduce using rule 24 (operadorMat -> DIVISION .)
+    CADENA          reduce using rule 24 (operadorMat -> DIVISION .)
+    HASH            reduce using rule 24 (operadorMat -> DIVISION .)
+    ARRAY           reduce using rule 24 (operadorMat -> DIVISION .)
+    VARIABLE_LOCAL  reduce using rule 24 (operadorMat -> DIVISION .)
+    VARIABLE_GLOBAL reduce using rule 24 (operadorMat -> DIVISION .)
+    VARIABLE_OBJETO reduce using rule 24 (operadorMat -> DIVISION .)
+    VARIABLE_CLASE  reduce using rule 24 (operadorMat -> DIVISION .)
+    CONSTANTE       reduce using rule 24 (operadorMat -> DIVISION .)
+
+
+state 52
+
+    (25) operadorMat -> POTENCIA .
+
+    PIZQ            reduce using rule 25 (operadorMat -> POTENCIA .)
+    ENTERO          reduce using rule 25 (operadorMat -> POTENCIA .)
+    CADENA          reduce using rule 25 (operadorMat -> POTENCIA .)
+    HASH            reduce using rule 25 (operadorMat -> POTENCIA .)
+    ARRAY           reduce using rule 25 (operadorMat -> POTENCIA .)
+    VARIABLE_LOCAL  reduce using rule 25 (operadorMat -> POTENCIA .)
+    VARIABLE_GLOBAL reduce using rule 25 (operadorMat -> POTENCIA .)
+    VARIABLE_OBJETO reduce using rule 25 (operadorMat -> POTENCIA .)
+    VARIABLE_CLASE  reduce using rule 25 (operadorMat -> POTENCIA .)
+    CONSTANTE       reduce using rule 25 (operadorMat -> POTENCIA .)
+
+
+state 53
+
+    (11) sentenciaFOR -> FOR variables IN . range DO codigo END
+    (12) range -> . ENTERO RANGO ENTERO
+
+    ENTERO          shift and go to state 63
+
+    range                          shift and go to state 62
+
+state 54
+
+    (10) unless -> UNLESS comparacion codigo . END
+
+    END             shift and go to state 64
+
+
+state 55
+
+    (40) sentenciaIf -> IF comparacion codigo . END
+
+    END             shift and go to state 65
+
+
+state 56
+
+    (18) expresion -> PIZQ valor . operadorMat expresion PDER
+    (21) operadorMat -> . MAS
+    (22) operadorMat -> . RESTA
+    (23) operadorMat -> . PROD
+    (24) operadorMat -> . DIVISION
+    (25) operadorMat -> . POTENCIA
+
+    MAS             shift and go to state 48
+    RESTA           shift and go to state 49
+    PROD            shift and go to state 50
+    DIVISION        shift and go to state 51
+    POTENCIA        shift and go to state 52
+
+    operadorMat                    shift and go to state 66
+
+state 57
+
+    (14) sentenciaWHILE -> WHILE comparacion DO codigo . END
+
+    END             shift and go to state 67
+
+
+state 58
+
+    (19) comparacion -> expresion operadorComp expresion .
+
+    DO              reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    WHILE           reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    FOR             reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    PUTS            reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    UNLESS          reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    COMENTARIOL     reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    IF              reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    VARIABLE_LOCAL  reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    VARIABLE_GLOBAL reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    VARIABLE_OBJETO reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    VARIABLE_CLASE  reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+    CONSTANTE       reduce using rule 19 (comparacion -> expresion operadorComp expresion .)
+
+
+state 59
+
+    (20) comparacion -> PIZQ expresion PDER . operadorComp expresion
+    (26) operadorComp -> . MAYOR
+    (27) operadorComp -> . MENOR
+    (28) operadorComp -> . COMP_IGUAL
+    (29) operadorComp -> . DIFERENTE
+
+    MAYOR           shift and go to state 41
+    MENOR           shift and go to state 42
+    COMP_IGUAL      shift and go to state 43
+    DIFERENTE       shift and go to state 44
+
+    operadorComp                   shift and go to state 68
+
+state 60
+
+    (18) expresion -> PIZQ valor operadorMat . expresion PDER
+    (17) expresion -> valor operadorMat . expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    valor                          shift and go to state 27
+    expresion                      shift and go to state 69
+    variables                      shift and go to state 29
+
+state 61
+
+    (17) expresion -> valor operadorMat expresion .
+
+    MAYOR           reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    MENOR           reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    COMP_IGUAL      reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    DIFERENTE       reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    WHILE           reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    FOR             reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    PUTS            reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    UNLESS          reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    COMENTARIOL     reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    IF              reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    VARIABLE_LOCAL  reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    VARIABLE_GLOBAL reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    VARIABLE_OBJETO reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    VARIABLE_CLASE  reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    CONSTANTE       reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    $end            reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    END             reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    DO              reduce using rule 17 (expresion -> valor operadorMat expresion .)
+    PDER            reduce using rule 17 (expresion -> valor operadorMat expresion .)
+
+
+state 62
+
+    (11) sentenciaFOR -> FOR variables IN range . DO codigo END
+
+    DO              shift and go to state 70
+
+
+state 63
+
+    (12) range -> ENTERO . RANGO ENTERO
+
+    RANGO           shift and go to state 71
+
+
+state 64
+
+    (10) unless -> UNLESS comparacion codigo END .
+
+    WHILE           reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    FOR             reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    PUTS            reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    UNLESS          reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    COMENTARIOL     reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    IF              reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    VARIABLE_LOCAL  reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    VARIABLE_GLOBAL reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    VARIABLE_OBJETO reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    VARIABLE_CLASE  reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    CONSTANTE       reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    $end            reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+    END             reduce using rule 10 (unless -> UNLESS comparacion codigo END .)
+
+
+state 65
+
+    (40) sentenciaIf -> IF comparacion codigo END .
+
+    WHILE           reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    FOR             reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    PUTS            reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    UNLESS          reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    COMENTARIOL     reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    IF              reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    VARIABLE_LOCAL  reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    VARIABLE_GLOBAL reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    VARIABLE_OBJETO reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    VARIABLE_CLASE  reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    CONSTANTE       reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    $end            reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+    END             reduce using rule 40 (sentenciaIf -> IF comparacion codigo END .)
+
+
+state 66
+
+    (18) expresion -> PIZQ valor operadorMat . expresion PDER
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    valor                          shift and go to state 27
+    expresion                      shift and go to state 72
+    variables                      shift and go to state 29
+
+state 67
+
+    (14) sentenciaWHILE -> WHILE comparacion DO codigo END .
+
+    WHILE           reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    FOR             reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    PUTS            reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    UNLESS          reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    COMENTARIOL     reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    IF              reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    VARIABLE_LOCAL  reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    VARIABLE_GLOBAL reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    VARIABLE_OBJETO reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    VARIABLE_CLASE  reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    CONSTANTE       reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    $end            reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+    END             reduce using rule 14 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
+
+
+state 68
+
+    (20) comparacion -> PIZQ expresion PDER operadorComp . expresion
+    (16) expresion -> . valor
+    (17) expresion -> . valor operadorMat expresion
+    (18) expresion -> . PIZQ valor operadorMat expresion PDER
+    (30) valor -> . ENTERO
+    (31) valor -> . variables
+    (32) valor -> . CADENA
+    (33) valor -> . HASH
+    (34) valor -> . ARRAY
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    PIZQ            shift and go to state 38
+    ENTERO          shift and go to state 28
+    CADENA          shift and go to state 30
+    HASH            shift and go to state 31
+    ARRAY           shift and go to state 32
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    expresion                      shift and go to state 73
+    valor                          shift and go to state 27
+    variables                      shift and go to state 29
+
+state 69
+
+    (18) expresion -> PIZQ valor operadorMat expresion . PDER
+    (17) expresion -> valor operadorMat expresion .
+
+  ! shift/reduce conflict for PDER resolved as shift
+    PDER            shift and go to state 74
+
+  ! PDER            [ reduce using rule 17 (expresion -> valor operadorMat expresion .) ]
+
+
+state 70
+
+    (11) sentenciaFOR -> FOR variables IN range DO . codigo END
+    (1) codigo -> . algoritmo
+    (2) codigo -> . algoritmo codigo
+    (3) algoritmo -> . asignacion
+    (4) algoritmo -> . sentenciaWHILE
+    (5) algoritmo -> . sentenciaFOR
+    (6) algoritmo -> . puts
+    (7) algoritmo -> . unless
+    (8) algoritmo -> . comentarios
+    (9) algoritmo -> . sentenciaIf
+    (15) asignacion -> . variables IGUAL expresion
+    (14) sentenciaWHILE -> . WHILE comparacion DO codigo END
+    (11) sentenciaFOR -> . FOR variables IN range DO codigo END
+    (13) puts -> . PUTS CADENA
+    (10) unless -> . UNLESS comparacion codigo END
+    (41) comentarios -> . COMENTARIOL
+    (40) sentenciaIf -> . IF comparacion codigo END
+    (35) variables -> . VARIABLE_LOCAL
+    (36) variables -> . VARIABLE_GLOBAL
+    (37) variables -> . VARIABLE_OBJETO
+    (38) variables -> . VARIABLE_CLASE
+    (39) variables -> . CONSTANTE
+
+    WHILE           shift and go to state 11
+    FOR             shift and go to state 12
+    PUTS            shift and go to state 13
+    UNLESS          shift and go to state 14
+    COMENTARIOL     shift and go to state 15
+    IF              shift and go to state 16
+    VARIABLE_LOCAL  shift and go to state 17
+    VARIABLE_GLOBAL shift and go to state 18
+    VARIABLE_OBJETO shift and go to state 19
+    VARIABLE_CLASE  shift and go to state 20
+    CONSTANTE       shift and go to state 21
+
+    variables                      shift and go to state 10
+    codigo                         shift and go to state 75
+    algoritmo                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    sentenciaWHILE                 shift and go to state 4
+    sentenciaFOR                   shift and go to state 5
+    puts                           shift and go to state 6
+    unless                         shift and go to state 7
+    comentarios                    shift and go to state 8
+    sentenciaIf                    shift and go to state 9
+
+state 71
+
+    (12) range -> ENTERO RANGO . ENTERO
+
+    ENTERO          shift and go to state 76
+
+
+state 72
+
+    (18) expresion -> PIZQ valor operadorMat expresion . PDER
+
+    PDER            shift and go to state 74
+
+
+state 73
+
+    (20) comparacion -> PIZQ expresion PDER operadorComp expresion .
+
+    DO              reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    WHILE           reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    FOR             reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    PUTS            reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    UNLESS          reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    COMENTARIOL     reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    IF              reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    VARIABLE_LOCAL  reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    VARIABLE_GLOBAL reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    VARIABLE_OBJETO reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    VARIABLE_CLASE  reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+    CONSTANTE       reduce using rule 20 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
+
+
+state 74
+
+    (18) expresion -> PIZQ valor operadorMat expresion PDER .
+
+    MAYOR           reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    MENOR           reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    COMP_IGUAL      reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    DIFERENTE       reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    WHILE           reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    FOR             reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    PUTS            reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    UNLESS          reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    COMENTARIOL     reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    IF              reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    VARIABLE_LOCAL  reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    VARIABLE_GLOBAL reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    VARIABLE_OBJETO reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    VARIABLE_CLASE  reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    CONSTANTE       reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    $end            reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    END             reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    PDER            reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+    DO              reduce using rule 18 (expresion -> PIZQ valor operadorMat expresion PDER .)
+
+
+state 75
+
+    (11) sentenciaFOR -> FOR variables IN range DO codigo . END
+
+    END             shift and go to state 77
+
+
+state 76
+
+    (12) range -> ENTERO RANGO ENTERO .
+
+    DO              reduce using rule 12 (range -> ENTERO RANGO ENTERO .)
+
+
+state 77
+
+    (11) sentenciaFOR -> FOR variables IN range DO codigo END .
+
+    WHILE           reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    FOR             reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    PUTS            reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    UNLESS          reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    COMENTARIOL     reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    IF              reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    VARIABLE_LOCAL  reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    VARIABLE_GLOBAL reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    VARIABLE_OBJETO reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    VARIABLE_CLASE  reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    CONSTANTE       reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    $end            reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+    END             reduce using rule 11 (sentenciaFOR -> FOR variables IN range DO codigo END .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PDER in state 69 resolved as shift
