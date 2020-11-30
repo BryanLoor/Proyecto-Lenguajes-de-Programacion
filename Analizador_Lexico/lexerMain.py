@@ -112,8 +112,9 @@ def analizar(data):
         tok = lexer.token()
         if not tok:
             break  # No more input
-        #print(tok)
-        return tok
+        print(tok)
+
+
 '''
 def leerText(txt):
     data=txt.split("\n")
@@ -123,7 +124,6 @@ def leerText(txt):
             break
         return analizar(linea)
 '''
-
 
 def leer(file):
     for linea in file:
@@ -140,3 +140,4 @@ leer(archivo1)
 leer(archivo2)
 leer(archivo3)
 '''
+
