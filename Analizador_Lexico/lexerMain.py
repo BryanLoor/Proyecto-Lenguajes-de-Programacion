@@ -114,7 +114,19 @@ def analizar(data):
             break  # No more input
         print(tok)
 
-
+def crearArchivo(data):
+    fic = open("lexico.txt", "w+")
+    lexer.input(data)
+    for linea in data:
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break  # No more input
+            fic.write(str(tok))
+            fic.write("\n")
+        if len(linea) == 0:
+            break
+    fic.close()
 '''
 def leerText(txt):
     data=txt.split("\n")
@@ -140,4 +152,3 @@ leer(archivo1)
 leer(archivo2)
 leer(archivo3)
 '''
-
