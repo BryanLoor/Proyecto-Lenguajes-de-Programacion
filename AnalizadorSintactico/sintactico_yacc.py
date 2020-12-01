@@ -14,7 +14,6 @@ p_expresion
 p_operadorComp
 p_variables
 p_comentarioS
-
 '''
 '''Reglas agregadas por Nicole Asqui
 p_sentenciaFor 
@@ -42,8 +41,6 @@ def p_algoritmo(p):
                     | sentenciaIf
     '''
 
-
-
 def p_unless(p):
     ''' unless : UNLESS comparacion codigo END
     '''
@@ -69,14 +66,11 @@ def p_asignacion(p):
 
 def p_expresion(p):
     '''expresion : valor
-
     '''
 
 def p_expresion_aritmetica(p):
     '''expresion : valor operadorMat expresion
                 | PIZQ valor operadorMat expresion PDER
-
-
     '''
 
 def p_comparacion(p):
@@ -106,7 +100,6 @@ def p_valor(p):
                 | CADENA
                 | HASH
                 | ARRAY
-
     '''
 
 def p_variables(p):
@@ -121,8 +114,6 @@ def p_sentenciaIf(p):
 
 def p_comentarios(p):
     ''' comentarios : COMENTARIOL
-
-
     '''
 
 # Error rule for syntax errors
@@ -132,12 +123,26 @@ def p_error(p):
 
 # Build the parser
 parser = yacc.yacc()
+def crearArchivoSintactico(data):
+    file = open("sintactico.txt", "w")
+    result = parser.parse(data)
+    file.write(str(result))
+    file.write("\n")
+    file.close()
+
+def reglas():
+    file = open("reglas.txt", "w")
+    print(parser.productions)
+    file.write("Reglas del Lenguaje\n")
+    for x in range(0, len(parser.productions)):
+        file.write(str(parser.productions[x]))
+        file.write("\n")
+    file.close()
 
 def leerCodigo(data):
-
         #print(data)
         result = parser.parse(data)
-        #print(result)
+        print(result)
         return result
 
 '''
