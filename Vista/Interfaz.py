@@ -1,5 +1,6 @@
 import tkinter as tk
-from  Analizador_Lexico.lexerMain  import analizar
+import sys
+from  Analizador_Lexico.lexerMain  import *
 from AnalizadorSintactico.sintactico_yacc import leerCodigo
 
 class Ventana:
@@ -14,6 +15,7 @@ class Ventana:
         self.frame.pack( ipadx=30, ipady=10)
 
         self.lexerButton = tk.Button(self.frame, text="Léxico", fg="red",padx=40,command=self.analizarLexico)
+
         self.lexerButton.pack()
         self.sintButton = tk.Button(self.frame, text="Sintáctico", fg="red",padx=30,command=self.analizarSintactico)
         self.sintButton.pack()
@@ -29,26 +31,23 @@ class Ventana:
         extra_window.geometry("300x500")
         label2 = tk.Label(extra_window, text="""Resultados arrojados""")
         label2.pack()
-        bop = tk.Frame(extra_window, width=100, height=100)
+
+        archivo = open("lexico.txt", "r")
+        bop = tk.Label(extra_window, text="rr")
         bop.pack()
 
-        for k in range(1, 10):
-            tv = 'El resultado es {}'.format(k)
-            b = tk.Button(bop, text=tv)
+        for linea in archivo.readlines():
+            tv = format(linea)
+            b = tk.Label(bop, text=tv)
             b.pack()
-
+            print(linea)
+        archivo.close()
     def limpiar(self):
         self.txtArea.delete("1.0","end")
 
-    def analizarLexico(self):
-        data = self.txtArea.get("1.0","end").split("\n")
-        for linea in data:
-            print(">>")
-            print(analizar(linea))
-            if len(linea) == 0:
-                break
 
     def analizarLexico(self):
+        crearArchivo(self.txtArea.get("1.0", "end"))
         data = self.txtArea.get("1.0","end").split("\n")
         for linea in data:
             print(">>")
@@ -68,3 +67,4 @@ win.title("Analizador Léxico-Sintáctico") #Cambiar el nombre de la ventana
 
 window = Ventana(win)
 win.mainloop()
+
