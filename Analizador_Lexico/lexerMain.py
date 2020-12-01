@@ -12,7 +12,9 @@ reserved = {
     "if":"IF",
     "puts":"PUTS",
     "for":"FOR",
-    "unless":"UNLESS"
+    "unless":"UNLESS",
+    "=begin" :"BEGINC",
+    "=end" :"ENDC"
 
 }
 tokens = [
@@ -104,17 +106,27 @@ def t_error(t):
 lexer = lex.lex()
 
 def analizar(data):
-    tokens=[]
     lexer.input(data)
     # Tokenize
     while True:
         tok = lexer.token()
         if not tok:
             break  # No more input
-        tokens.append(tok)
-        #print(tok)
-    return tokens
+        print(tok)
 
+def crearArchivo(data):
+    fic = open("lexico.txt", "w")
+    lexer.input(data)
+    for linea in data:
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break  # No more input
+            fic.write(str(tok))
+            fic.write("\n")
+        if len(linea) == 0:
+            break
+    fic.close()
 '''
 def leerText(txt):
     data=txt.split("\n")
@@ -127,7 +139,7 @@ def leerText(txt):
 
 def leer(file):
     for linea in file:
-        print(">>" + linea)
+        #print(">>" + linea)
         analizar(linea)
         if len(linea) == 0:
             break
@@ -140,3 +152,4 @@ leer(archivo1)
 leer(archivo2)
 leer(archivo3)
 '''
+
