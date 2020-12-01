@@ -4,13 +4,11 @@ Unused terminals:
 
     ALIAS
     AND
-    BEGINC
     BREAK
     CASE
     CDER
     CIZQ
     ELSE
-    ENDC
     FUNCION
     LDER
     LIZQ
@@ -66,7 +64,6 @@ Terminals, with rules where they appear
 ALIAS                : 
 AND                  : 
 ARRAY                : 34
-BEGINC               : 
 BREAK                : 
 CADENA               : 13 32
 CASE                 : 
@@ -80,7 +77,6 @@ DIVISION             : 24
 DO                   : 11 14
 ELSE                 : 
 END                  : 10 11 14 40
-ENDC                 : 
 ENTERO               : 12 12 30
 FOR                  : 11
 FUNCION              : 
