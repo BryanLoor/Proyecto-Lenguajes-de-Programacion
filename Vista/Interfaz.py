@@ -1,7 +1,7 @@
 import tkinter as tk
 import sys
 from  Analizador_Lexico.lexerMain  import *
-from AnalizadorSintactico.sintactico_yacc import leerCodigo
+from AnalizadorSintactico.sintactico_yacc import *
 
 class Ventana:
     def __init__(self, root):
@@ -21,19 +21,26 @@ class Ventana:
         self.sintButton.pack()
         self.btnLimpiar = tk.Button(self.frame, text="Limpiar", fg="blue", padx=30, command=self.limpiar)
         self.btnLimpiar.pack()
-        self.btnActualizar = tk.Button(self.frame, text="Actualizar Resultados", fg="blue", padx=30, command=self.actualizar)
+        self.btnActualizar = tk.Button(self.frame, text="Resultados Lexicos", fg="blue", padx=30, command=self.actualizar)
         self.btnActualizar.pack()
+        self.btnSintactico = tk.Button(self.frame, text="Resultados Sintacticos", fg="blue", padx=30,command=self.sintacticosR)
+        self.btnSintactico.pack()
 
-
-
-    def actualizar(self):
-        extra_window = tk.Toplevel(self.frame)
-        extra_window.geometry("300x500")
-        label2 = tk.Label(extra_window, text="""Resultados arrojados""")
-        label2.pack()
-
-        archivo = open("lexico.txt", "r")
-        bop = tk.Label(extra_window, text="rr")
+    def sintacticosR(self):
+        extra_window2 = tk.Toplevel(self.frame)
+        extra_window2.geometry("300x500")
+        label = tk.Label(extra_window2, text="""Resultados arrojados""")
+        label.pack()
+        archivo2 = open("sintactico.txt", "r")
+        bop2 = tk.Label(extra_window2)
+        bop2.pack()
+        for linea in archivo2.readlines():
+            tv = format(linea)
+            b = tk.Label(bop2, text=tv)
+            b.pack()
+        archivo2.close()
+        archivo = open("reglas.txt", "r")
+        bop = tk.Label(extra_window2)
         bop.pack()
 
         for linea in archivo.readlines():
@@ -42,6 +49,23 @@ class Ventana:
             b.pack()
             print(linea)
         archivo.close()
+
+    def actualizar(self):
+        extra_window = tk.Toplevel(self.frame)
+        extra_window.geometry("300x500")
+        label2 = tk.Label(extra_window, text="""Resultados arrojados""")
+        label2.pack()
+        archivo = open("lexico.txt", "r")
+        bop = tk.Label(extra_window)
+        bop.pack()
+        for linea in archivo.readlines():
+            tv = format(linea)
+            b = tk.Label(bop, text=tv)
+            b.pack()
+            print(linea)
+        archivo.close()
+
+
     def limpiar(self):
         self.txtArea.delete("1.0","end")
 
@@ -55,8 +79,9 @@ class Ventana:
             if len(linea) == 0:
                 break
 
-
     def analizarSintactico(self):
+        crearArchivoSintactico(self.txtArea.get("1.0", "end"))
+        reglas()
         cont = leerCodigo(self.txtArea.get("1.0", "end"))
         #print(cont)
 
@@ -67,4 +92,3 @@ win.title("Analizador Léxico-Sintáctico") #Cambiar el nombre de la ventana
 
 window = Ventana(win)
 win.mainloop()
-
