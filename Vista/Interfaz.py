@@ -1,8 +1,8 @@
 import tkinter as tk
-from  Analizador_Lexico.lexerMain  import analizar
-from AnalizadorSintactico.sintactico_yacc import leerCodigo
+import sys
+from  Analizador_Lexico.lexerMain  import *
+from AnalizadorSintactico.sintactico_yacc import *
 
-tokenList=[]
 class Ventana:
     def __init__(self, root):
 
@@ -15,51 +15,75 @@ class Ventana:
         self.frame.pack( ipadx=30, ipady=10)
 
         self.lexerButton = tk.Button(self.frame, text="Léxico", fg="red",padx=40,command=self.analizarLexico)
+
         self.lexerButton.pack()
         self.sintButton = tk.Button(self.frame, text="Sintáctico", fg="red",padx=30,command=self.analizarSintactico)
         self.sintButton.pack()
         self.btnLimpiar = tk.Button(self.frame, text="Limpiar", fg="blue", padx=30, command=self.limpiar)
         self.btnLimpiar.pack()
-        self.btnActualizar = tk.Button(self.frame, text="Actualizar Resultados", fg="blue", padx=30, command=self.actualizar)
+        self.btnActualizar = tk.Button(self.frame, text="Resultados Lexicos", fg="blue", padx=30, command=self.actualizar)
         self.btnActualizar.pack()
+        self.btnSintactico = tk.Button(self.frame, text="Resultados Sintacticos", fg="blue", padx=30,command=self.sintacticosR)
+        self.btnSintactico.pack()
 
+    def sintacticosR(self):
+        extra_window2 = tk.Toplevel(self.frame)
+        extra_window2.geometry("300x500")
+        label = tk.Label(extra_window2, text="""Resultados arrojados""")
+        label.pack()
+        archivo2 = open("sintactico.txt", "r")
+        bop2 = tk.Label(extra_window2)
+        bop2.pack()
+        for linea in archivo2.readlines():
+            tv = format(linea)
+            b = tk.Label(bop2, text=tv)
+            b.pack()
+        archivo2.close()
+        archivo = open("reglas.txt", "r")
+        bop = tk.Label(extra_window2)
+        bop.pack()
+
+        for linea in archivo.readlines():
+            tv = format(linea)
+            b = tk.Label(bop, text=tv)
+            b.pack()
+            print(linea)
+        archivo.close()
 
     def actualizar(self):
-        self.extra_window =tk.Toplevel(self.frame)
-        self.extra_window.geometry("500x500+400+100")
-        label2 = tk.Label(self.extra_window, text="""Resultados arrojados""")
-        label2.grid(row=0,column=0,ipadx=30, ipady=10)
-        resultados= tk.LabelFrame(self.extra_window,text="Tokens reconocidos")
-        resultados.grid(row=1,column=0,ipadx=50, ipady=20)
-
-        scrollbar = tk.Scrollbar(resultados)
-        scrollbar.grid(row=2,column=0,ipadx=150, ipady=10, columnspan=3)
-
-        mylist = tk.Listbox(resultados, yscrollcommand=scrollbar.set)
-
-        for val in tokenList:
-            for tok in val:
-                mylist.insert(tk.END, "Token:   " + tok.value+"Regla:   "+tok.type)
-        mylist.grid(row=2,column=2,ipadx=150, ipady=20, sticky='e')
-        scrollbar.config(command=mylist.yview)
-
+        extra_window = tk.Toplevel(self.frame)
+        extra_window.geometry("300x500")
+        label2 = tk.Label(extra_window, text="""Resultados arrojados""")
+        label2.pack()
+        archivo = open("lexico.txt", "r")
+        bop = tk.Label(extra_window)
+        bop.pack()
+        for linea in archivo.readlines():
+            tv = format(linea)
+            b = tk.Label(bop, text=tv)
+            b.pack()
+            print(linea)
+        archivo.close()
 
 
     def limpiar(self):
         self.txtArea.delete("1.0","end")
-        tokenList.clear()
+
 
     def analizarLexico(self):
+        crearArchivo(self.txtArea.get("1.0", "end"))
         data = self.txtArea.get("1.0","end").split("\n")
         for linea in data:
-            tokens= analizar(linea)
-            tokenList.append(tokens)
+            print(">>")
+            print(analizar(linea))
             if len(linea) == 0:
                 break
 
     def analizarSintactico(self):
+        crearArchivoSintactico(self.txtArea.get("1.0", "end"))
+        reglas()
         cont = leerCodigo(self.txtArea.get("1.0", "end"))
-        print(cont)
+        #print(cont)
 
 # Creamos la aplicación, la ventana e iniciamos el bucle
 win = tk.Tk()
