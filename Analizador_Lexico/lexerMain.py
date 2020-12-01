@@ -1,154 +1,162 @@
-import ply.lex as lex
-reserved = {
-    "alias": "ALIAS",
-    "break": "BREAK",
-    "case": "CASE",
-    "while":"WHILE",
-    "end":"END",
-    "do":"DO",
-    "def":"FUNCION",
-    "else":"ELSE",
-    "in": "IN",
-    "if":"IF",
-    "puts":"PUTS",
-    "for":"FOR",
-    "unless":"UNLESS",
-    "=begin" :"BEGINC",
-    "=end" :"ENDC"
+import ply.yacc as yacc
 
-}
-tokens = [
-    "VARIABLE_GLOBAL",
-    "VARIABLE_LOCAL",
-    "VARIABLE_OBJETO",
-    "VARIABLE_CLASE",
-    "CONSTANTE",
-    "COMP_IGUAL",
-    "IGUAL",
-    "DIFERENTE",
-    "ENTERO",
-    "MAS",
-    "RESTA",
-    "MENOR",
-    "MAYOR",
-    "CADENA",
-    "POTENCIA",
-    "DIVISION",
-    "CIZQ",
-    "CDER",
-    "ARRAY",
-    "HASH",
-    "LIZQ",
-    "LDER",
-    "PIZQ",
-    "PDER",
-    "RANGO",
-    "AND",
-    "OR",
-    "PROD",
-    "COMENTARIOL"
+# Get the token map from the lexer.  This is required.
 
+from Analizador_Lexico.lexerMain import tokens
 
-
-] + list(reserved.values())
-t_AND=r"&&"
-t_OR=r"\|\|"
-t_IGUAL= r"="
-t_COMP_IGUAL=r"=="
-t_DIFERENTE=r"!="
-t_MAS = r"\+"
-t_ENTERO = r"\d+"
-t_RESTA=r"-"
-t_MENOR=r"<"
-t_MAYOR=r">"
-t_CADENA= r'"[a-zA-Z0-9\s,]*"'
-t_PROD =r"\*"
-t_POTENCIA = r"\*\*"
-t_DIVISION=r"/"
-t_CIZQ = r"\["
-t_CDER = r"\]"
-t_LIZQ = r"\{"
-t_LDER = r"\}"
-t_PIZQ = r"\("
-t_PDER = r"\)"
-t_RANGO= r"\.\."
-t_ARRAY = r"\[(('([a-zA-z\s])*'|[0-9]+|[0-9]+,?[0-9]*),?)+\]"
-t_HASH = r"\{((\"|')?[a-zA-Z_][a-zA-Z0-9_\s]*(\"|')?(\:|\=>)([0-9]|[1-9][0-9]*|(\"|')[\w\s]+(\"|')),?)+\}"
-t_COMENTARIOL = r"\#.*"
-
-def t_CONSTANTE(t):
-    r"[A-Z][a-zA-Z0-9_]*"
-    t.type = reserved.get(t.value, 'CONSTANTE')  # Check for reserved words
-    return t
-def t_VARIABLE_LOCAL(t):
-    r"[a-z_][a-zA-Z0-9_]*"
-    t.type = reserved.get(t.value, 'VARIABLE_LOCAL')  # Check for reserved words
-    return t
-def t_VARIABLE_OBJETO(t):
-    r"@[a-zA-Z_][a-zA-Z0-9_]*"
-    t.type = reserved.get(t.value, 'VARIABLE_OBJETO')  # Check for reserved words
-    return t
-def t_VARIABLE_CLASE(t):
-    r"@@[a-zA-Z0-9_]*"
-    t.type = reserved.get(t.value, 'VARIABLE_CLASE')  # Check for reserved words
-    return t
-def t_VARIABLE_GLOBAL(t):
-    r"\$[a-zA-Z0-9_]*"
-    t.type = reserved.get(t.value, 'VARIABLE_GLOBAL')  # Check for reserved words
-    return t
-def t_newline(t):
-    r"\n+"
-    t.lexer.lineno += len(t.value)
-t_ignore = ' \t'
-def t_error(t):
-    print("No es reconocido '%s'" % t.value[0])
-    t.lexer.skip(1)
-lexer = lex.lex()
-
-def analizar(data):
-    lexer.input(data)
-    # Tokenize
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        print(tok)
-
-def crearArchivo(data):
-    fic = open("lexico.txt", "w+")
-    lexer.input(data)
-    for linea in data:
-        while True:
-            tok = lexer.token()
-            if not tok:
-                break  # No more input
-            fic.write(str(tok))
-            fic.write("\n")
-        if len(linea) == 0:
-            break
-    fic.close()
+'''Reglas agregadas por Bryan Loor
+p_codigo 
+p_algoritmo
+p_asignacion
+p_sentenciaWhile
+p_expresion
+p_operadorComp
+p_variables
+p_comentarioS
 '''
-def leerText(txt):
-    data=txt.split("\n")
-    for linea in data:
-        print(">>")
-        if len(linea)==0:
-            break
-        return analizar(linea)
+'''Reglas agregadas por Nicole Asqui
+p_sentenciaFor 
+p_range
+p_puts
+p_unless
+'''
+'''Reglas agregadas por Ricardo Vilcacundo
+p-sentenciaIf
 '''
 
-def leer(file):
-    for linea in file:
-        print(">>" + linea)
-        analizar(linea)
-        if len(linea) == 0:
-            break
 
-archivo1 = open("../archivos/ejemplosVilcacundo.txt")
-archivo2 = open("../archivos/ejemplosLoor.txt")
-archivo3 = open("../archivos/ejemplosAsqui.txt")
+
+def p_codigo(p):
+    '''codigo : algoritmo
+                | algoritmo codigo
+    '''
+def p_algoritmo(p):
+    ''' algoritmo : asignacion
+                    | sentenciaWHILE
+                    | sentenciaFOR
+                    | puts
+                    | unless
+                    | comentarios
+                    | sentenciaIf
+    '''
+
+def p_unless(p):
+    ''' unless : UNLESS comparacion codigo END
+    '''
+def p_sentenciaFor(p):
+    ''' sentenciaFOR : FOR variables IN range DO codigo END
+    '''
+
+def p_range(p):
+    ''' range : ENTERO RANGO ENTERO
+    '''
+
+def p_puts(p):
+    ''' puts : PUTS CADENA
+    '''
+
+
+def p_sentenciaWhile(p):
+    '''sentenciaWHILE : WHILE  comparacion DO codigo END
+    '''
+
+def p_asignacion(p):
+    'asignacion : variables IGUAL expresion'
+
+def p_expresion(p):
+    '''expresion : valor
+    '''
+
+def p_expresion_aritmetica(p):
+    '''expresion : valor operadorMat expresion
+                | PIZQ valor operadorMat expresion PDER
+    '''
+
+def p_comparacion(p):
+    '''comparacion : expresion operadorComp expresion
+        | PIZQ expresion PDER operadorComp expresion
+    '''
+
+
+def p_operadorMat(p):
+    '''operadorMat : MAS
+                | RESTA
+                | PROD
+                | DIVISION
+                | POTENCIA
+    '''
+def p_operadorComp(p):
+    '''operadorComp : MAYOR
+                | MENOR
+                | COMP_IGUAL
+                | DIFERENTE
+    '''
+
+
+def p_valor(p):
+    '''valor : ENTERO
+                | variables
+                | CADENA
+                | HASH
+                | ARRAY
+    '''
+
+def p_variables(p):
+    """ variables : VARIABLE_LOCAL
+                | VARIABLE_GLOBAL
+                | VARIABLE_OBJETO
+                | VARIABLE_CLASE
+                | CONSTANTE
+    """
+def p_sentenciaIf(p):
+    'sentenciaIf : IF comparacion codigo END'
+
+def p_comentarios(p):
+    ''' comentarios : COMENTARIOL
+    '''
+
+# Error rule for syntax errors
+def p_error(p):
+    print("Syntax error in input!")
+
+
+# Build the parser
+parser = yacc.yacc()
+def crearArchivoSintactico(data):
+    file = open("sintactico.txt", "w")
+    result = parser.parse(data)
+    file.write(str(result))
+    file.write("\n")
+    file.close()
+
+def reglas():
+    file = open("reglas.txt", "w")
+    print(parser.productions)
+    file.write("Reglas del Lenguaje\n")
+    for x in range(0, len(parser.productions)):
+        file.write(str(parser.productions[x]))
+        file.write("\n")
+    file.close()
+
+def leerCodigo(data):
+        #print(data)
+        result = parser.parse(data)
+        print(result)
+        return result
+
 '''
-leer(archivo1)
-leer(archivo2)
-leer(archivo3)
+def leerAlgoritmo(file):
+    s = file.read()
+    print(s)
+    result = parser.parse(s)
+    print(result)
+    file.close()
+'''
+archivo1 = open("../archivos/algoritmoLoor.txt")
+archivo2 = open("../archivos/algoritmoAsqui.txt")
+archivo3 = open("../archivos/algoritmoVilcacundo.txt")
+'''
+leerAlgoritmo(archivo1)
+leerAlgoritmo(archivo2)
+leerAlgoritmo(archivo3)
 '''
