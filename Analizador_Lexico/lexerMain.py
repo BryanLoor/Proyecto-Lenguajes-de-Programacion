@@ -122,7 +122,7 @@ def crearArchivo(data):
             tok = lexer.token()
             if not tok:
                 break  # No more input
-            fic.write(str(tok))
+            fic.write(str("Token:   " + tok.value + "   Regla:  " + tok.type))
             fic.write("\n")
         if len(linea) == 0:
             break
@@ -152,4 +152,3 @@ leer(archivo1)
 leer(archivo2)
 leer(archivo3)
 '''
-
