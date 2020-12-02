@@ -1,4 +1,3 @@
-
 import ply.yacc as yacc
 
 # Get the token map from the lexer.  This is required.
@@ -60,7 +59,17 @@ def p_puts(p):
 def p_sentenciaWhile(p):
     '''sentenciaWHILE : WHILE  comparacion DO codigo END
     '''
-
+'''def p_sentenciaCase(p):
+    sentenciaCase : CASE  variables WHEN valorcase codigo ELSE codigo END
+    
+'''
+'''def p_valorcase(p):
+    valorcase : ENTERO
+                | variables
+                | CADENA
+                | RANGE
+    
+'''
 def p_asignacion(p):
     'asignacion : variables IGUAL expresion'
 
@@ -123,6 +132,7 @@ def p_error(p):
 
 # Build the parser
 parser = yacc.yacc()
+
 def crearArchivoSintactico(data):
     file = open("sintactico.txt", "w")
     result = parser.parse(data)
@@ -142,22 +152,20 @@ def reglas():
 def leerCodigo(data):
         #print(data)
         result = parser.parse(data)
-        print(result)
+        #print(result.value)
         return result
 
-'''
 def leerAlgoritmo(file):
     s = file.read()
     print(s)
     result = parser.parse(s)
     print(result)
     file.close()
-'''
+
 archivo1 = open("../archivos/algoritmoLoor.txt")
 archivo2 = open("../archivos/algoritmoAsqui.txt")
 archivo3 = open("../archivos/algoritmoVilcacundo.txt")
-'''
+
 leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
 leerAlgoritmo(archivo3)
-'''
