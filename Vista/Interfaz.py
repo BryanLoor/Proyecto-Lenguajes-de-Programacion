@@ -2,7 +2,7 @@ import tkinter as tk
 import sys
 from  Analizador_Lexico.lexerMain  import *
 from AnalizadorSintactico.sintactico_yacc import *
-
+tokenList=[]
 class Ventana:
     def __init__(self, root):
 
@@ -52,18 +52,25 @@ class Ventana:
 
     def actualizar(self):
         extra_window = tk.Toplevel(self.frame)
-        extra_window.geometry("300x500")
-        label2 = tk.Label(extra_window, text="""Resultados arrojados""")
-        label2.pack()
+        extra_window.geometry("500x500")
+
         archivo = open("lexico.txt", "r")
-        bop = tk.Label(extra_window)
+        bop = tk.Listbox(extra_window)
         bop.pack()
+        label2 = tk.Label(bop, text="""Resultados arrojados""")
+        label2.pack()
+        scrollbar = tk.Scrollbar(extra_window)
+        scrollbar.pack(side='right', fill='y')
+
+        listbox = tk.Listbox(extra_window,width=80, height=20, yscrollcommand=scrollbar.set)
         for linea in archivo.readlines():
-            tv = format(linea)
-            b = tk.Label(bop, text=tv)
-            b.pack()
+            listbox.insert("end",str(linea))
             print(linea)
         archivo.close()
+        listbox.pack(side="left", fill="both")
+        scrollbar.config(command=listbox.yview)
+
+
 
 
     def limpiar(self):
@@ -92,3 +99,4 @@ win.title("Analizador Léxico-Sintáctico") #Cambiar el nombre de la ventana
 
 window = Ventana(win)
 win.mainloop()
+
