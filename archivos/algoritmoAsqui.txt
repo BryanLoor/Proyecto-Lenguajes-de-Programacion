@@ -33,4 +33,5 @@ Array.push("gato")
 Array.append("hola Mundo".include?"undo")
 Array.pop("PERRO")
 
+arr [ 4,3 ]
 

@@ -1,9 +1,5 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    CDER
-
 Grammar
 
 Rule 0     S' -> codigo
@@ -53,10 +49,10 @@ Rule 43    valorSencillo -> RANGO
 Rule 44    sentenciaBegin -> BEGIN codigo END
 Rule 45    asignacion -> variables IGUAL expresion
 Rule 46    expresion -> valor
-Rule 47    slicing -> variables CIZQ ENTERO
-Rule 48    slicing -> variables CIZQ ENTERO COMA ENTERO
-Rule 49    slicing -> variables CIZQ RANGO
-Rule 50    slicing -> variables CIZQ CADENA
+Rule 47    slicing -> variables CIZQ ENTERO CDER
+Rule 48    slicing -> variables CIZQ ENTERO COMA ENTERO CDER
+Rule 49    slicing -> variables CIZQ RANGO CDER
+Rule 50    slicing -> variables CIZQ CADENA CDER
 Rule 51    expresion -> valor operadorMat expresion
 Rule 52    expresion -> PIZQ valor operadorMat expresion PDER
 Rule 53    comparacion -> expresion operadorComp expresion
@@ -103,7 +99,7 @@ BEGIN                : 44
 BREAK                : 59 60
 CADENA               : 22 23 28 29 30 30 42 50 72
 CASE                 : 33
-CDER                 : 
+CDER                 : 47 48 49 50
 CIZQ                 : 47 48 49 50
 COMA                 : 29 48
 COMENTARIO           : 86
@@ -217,10 +213,10 @@ state 0
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -304,10 +300,10 @@ state 2
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -754,10 +750,10 @@ state 17
 state 18
 
     (45) asignacion -> variables . IGUAL expresion
-    (47) slicing -> variables . CIZQ ENTERO
-    (48) slicing -> variables . CIZQ ENTERO COMA ENTERO
-    (49) slicing -> variables . CIZQ RANGO
-    (50) slicing -> variables . CIZQ CADENA
+    (47) slicing -> variables . CIZQ ENTERO CDER
+    (48) slicing -> variables . CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> variables . CIZQ RANGO CDER
+    (50) slicing -> variables . CIZQ CADENA CDER
     (24) push -> variables . PUNTO PUSH PIZQ valor PDER
     (25) append -> variables . PUNTO APPEND PIZQ valor PDER
     (26) pop -> variables . PUNTO POP PIZQ valor PDER
@@ -1042,10 +1038,10 @@ state 27
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -1385,10 +1381,10 @@ state 35
 
 state 36
 
-    (47) slicing -> variables CIZQ . ENTERO
-    (48) slicing -> variables CIZQ . ENTERO COMA ENTERO
-    (49) slicing -> variables CIZQ . RANGO
-    (50) slicing -> variables CIZQ . CADENA
+    (47) slicing -> variables CIZQ . ENTERO CDER
+    (48) slicing -> variables CIZQ . ENTERO COMA ENTERO CDER
+    (49) slicing -> variables CIZQ . RANGO CDER
+    (50) slicing -> variables CIZQ . CADENA CDER
 
     ENTERO          shift and go to state 63
     RANGO           shift and go to state 64
@@ -1895,10 +1891,10 @@ state 52
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -1975,10 +1971,10 @@ state 53
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -2149,10 +2145,10 @@ state 60
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -2265,96 +2261,39 @@ state 62
 
 state 63
 
-    (47) slicing -> variables CIZQ ENTERO .
-    (48) slicing -> variables CIZQ ENTERO . COMA ENTERO
+    (47) slicing -> variables CIZQ ENTERO . CDER
+    (48) slicing -> variables CIZQ ENTERO . COMA ENTERO CDER
 
-    WHILE           reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    FOR             reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    PUTS            reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    UNLESS          reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    COMENTARIO      reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    IF              reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    CASE            reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    BEGIN           reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    FUNCION         reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    CADENA          reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    VARIABLE_LOCAL  reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    VARIABLE_GLOBAL reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    VARIABLE_OBJETO reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    VARIABLE_CLASE  reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    CONSTANTE       reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    $end            reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    END             reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    BREAK           reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    WHEN            reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    ELSE            reduce using rule 47 (slicing -> variables CIZQ ENTERO .)
-    COMA            shift and go to state 96
+    CDER            shift and go to state 96
+    COMA            shift and go to state 97
 
 
 state 64
 
-    (49) slicing -> variables CIZQ RANGO .
+    (49) slicing -> variables CIZQ RANGO . CDER
 
-    WHILE           reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    FOR             reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    PUTS            reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    UNLESS          reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    COMENTARIO      reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    IF              reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    CASE            reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    BEGIN           reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    FUNCION         reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    CADENA          reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    VARIABLE_LOCAL  reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    VARIABLE_GLOBAL reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    VARIABLE_OBJETO reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    VARIABLE_CLASE  reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    CONSTANTE       reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    $end            reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    END             reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    BREAK           reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    WHEN            reduce using rule 49 (slicing -> variables CIZQ RANGO .)
-    ELSE            reduce using rule 49 (slicing -> variables CIZQ RANGO .)
+    CDER            shift and go to state 98
 
 
 state 65
 
-    (50) slicing -> variables CIZQ CADENA .
+    (50) slicing -> variables CIZQ CADENA . CDER
 
-    WHILE           reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    FOR             reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    PUTS            reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    UNLESS          reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    COMENTARIO      reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    IF              reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    CASE            reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    BEGIN           reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    FUNCION         reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    CADENA          reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    VARIABLE_LOCAL  reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    VARIABLE_GLOBAL reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    VARIABLE_OBJETO reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    VARIABLE_CLASE  reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    CONSTANTE       reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    $end            reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    END             reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    BREAK           reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    WHEN            reduce using rule 50 (slicing -> variables CIZQ CADENA .)
-    ELSE            reduce using rule 50 (slicing -> variables CIZQ CADENA .)
+    CDER            shift and go to state 99
 
 
 state 66
 
     (24) push -> variables PUNTO PUSH . PIZQ valor PDER
 
-    PIZQ            shift and go to state 97
+    PIZQ            shift and go to state 100
 
 
 state 67
 
     (25) append -> variables PUNTO APPEND . PIZQ valor PDER
 
-    PIZQ            shift and go to state 98
+    PIZQ            shift and go to state 101
 
 
 state 68
@@ -2362,7 +2301,7 @@ state 68
     (26) pop -> variables PUNTO POP . PIZQ valor PDER
     (27) pop -> variables PUNTO POP . PIZQ PDER
 
-    PIZQ            shift and go to state 99
+    PIZQ            shift and go to state 102
 
 
 state 69
@@ -2393,10 +2332,10 @@ state 69
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -2426,7 +2365,7 @@ state 69
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    codigo                         shift and go to state 100
+    codigo                         shift and go to state 103
     algoritmo                      shift and go to state 2
     asignacion                     shift and go to state 3
     sentenciaWHILE                 shift and go to state 4
@@ -2479,7 +2418,7 @@ state 70
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    expresion                      shift and go to state 101
+    expresion                      shift and go to state 104
     valor                          shift and go to state 41
     variables                      shift and go to state 43
     split                          shift and go to state 47
@@ -2559,13 +2498,13 @@ state 75
     (68) operadorComp -> . COMP_IGUAL
     (69) operadorComp -> . DIFERENTE
 
-    PDER            shift and go to state 102
+    PDER            shift and go to state 105
     MAYOR           shift and go to state 71
     MENOR           shift and go to state 72
     COMP_IGUAL      shift and go to state 73
     DIFERENTE       shift and go to state 74
 
-    operadorComp                   shift and go to state 103
+    operadorComp                   shift and go to state 106
 
 state 76
 
@@ -2589,7 +2528,7 @@ state 76
     DIVISION        shift and go to state 81
     POTENCIA        shift and go to state 82
 
-    operadorMat                    shift and go to state 104
+    operadorMat                    shift and go to state 107
 
 state 77
 
@@ -2626,7 +2565,7 @@ state 77
     CONSTANTE       shift and go to state 33
 
     valor                          shift and go to state 41
-    expresion                      shift and go to state 105
+    expresion                      shift and go to state 108
     variables                      shift and go to state 43
     split                          shift and go to state 47
     include                        shift and go to state 48
@@ -2719,8 +2658,8 @@ state 83
     (22) reverse -> CADENA PUNTO . REVERSE
 
     SPLIT           shift and go to state 92
-    INCLUDE         shift and go to state 106
-    REVERSE         shift and go to state 107
+    INCLUDE         shift and go to state 109
+    REVERSE         shift and go to state 110
 
 
 state 84
@@ -2728,15 +2667,15 @@ state 84
     (19) sentenciaFOR -> FOR variables IN . range DO codigo END
     (20) range -> . ENTERO RANGO ENTERO
 
-    ENTERO          shift and go to state 109
+    ENTERO          shift and go to state 112
 
-    range                          shift and go to state 108
+    range                          shift and go to state 111
 
 state 85
 
     (18) unless -> UNLESS comparacion codigo . END
 
-    END             shift and go to state 110
+    END             shift and go to state 113
 
 
 state 86
@@ -2747,11 +2686,11 @@ state 86
     (59) sentenciaBREAK -> . BREAK
     (60) sentenciaBREAK -> . BREAK variables
 
-    END             shift and go to state 112
-    BREAK           shift and go to state 114
+    END             shift and go to state 115
+    BREAK           shift and go to state 117
 
-    finalIf                        shift and go to state 111
-    sentenciaBREAK                 shift and go to state 113
+    finalIf                        shift and go to state 114
+    sentenciaBREAK                 shift and go to state 116
 
 state 87
 
@@ -2790,7 +2729,7 @@ state 87
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    comparacion                    shift and go to state 115
+    comparacion                    shift and go to state 118
     expresion                      shift and go to state 39
     valor                          shift and go to state 41
     variables                      shift and go to state 43
@@ -2835,7 +2774,7 @@ state 88
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    comparacion                    shift and go to state 116
+    comparacion                    shift and go to state 119
     expresion                      shift and go to state 39
     valor                          shift and go to state 41
     variables                      shift and go to state 43
@@ -2847,7 +2786,7 @@ state 89
 
     (33) sentenciaCASE -> CASE variables sentenciaWhens . ELSE codigo END
 
-    ELSE            shift and go to state 117
+    ELSE            shift and go to state 120
 
 
 state 90
@@ -2863,7 +2802,7 @@ state 90
     WHEN            shift and go to state 91
 
     sentenciaWHEN                  shift and go to state 90
-    sentenciaWhens                 shift and go to state 118
+    sentenciaWhens                 shift and go to state 121
 
 state 91
 
@@ -2879,23 +2818,23 @@ state 91
     (81) variables -> . VARIABLE_CLASE
     (82) variables -> . CONSTANTE
 
-    ENTERO          shift and go to state 120
-    CADENA          shift and go to state 122
-    RANGO           shift and go to state 123
+    ENTERO          shift and go to state 123
+    CADENA          shift and go to state 125
+    RANGO           shift and go to state 126
     VARIABLE_LOCAL  shift and go to state 29
     VARIABLE_GLOBAL shift and go to state 30
     VARIABLE_OBJETO shift and go to state 31
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    valorSencillo                  shift and go to state 119
-    variables                      shift and go to state 121
+    valorSencillo                  shift and go to state 122
+    variables                      shift and go to state 124
 
 state 92
 
     (23) split -> CADENA PUNTO SPLIT . PIZQ valorsplit PDER
 
-    PIZQ            shift and go to state 124
+    PIZQ            shift and go to state 127
 
 
 state 93
@@ -2928,7 +2867,7 @@ state 94
 
     (31) sentenciaFuncion -> FUNCION variables codigo . END
 
-    END             shift and go to state 125
+    END             shift and go to state 128
 
 
 state 95
@@ -2946,16 +2885,94 @@ state 95
     DIVISION        shift and go to state 81
     POTENCIA        shift and go to state 82
 
-    operadorMat                    shift and go to state 126
+    operadorMat                    shift and go to state 129
 
 state 96
 
-    (48) slicing -> variables CIZQ ENTERO COMA . ENTERO
+    (47) slicing -> variables CIZQ ENTERO CDER .
 
-    ENTERO          shift and go to state 127
+    WHILE           reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    FOR             reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    PUTS            reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    UNLESS          reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    COMENTARIO      reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    IF              reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    CASE            reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    BEGIN           reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    FUNCION         reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    CADENA          reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    VARIABLE_LOCAL  reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    VARIABLE_GLOBAL reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    VARIABLE_OBJETO reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    VARIABLE_CLASE  reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    CONSTANTE       reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    $end            reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    END             reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    BREAK           reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    WHEN            reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
+    ELSE            reduce using rule 47 (slicing -> variables CIZQ ENTERO CDER .)
 
 
 state 97
+
+    (48) slicing -> variables CIZQ ENTERO COMA . ENTERO CDER
+
+    ENTERO          shift and go to state 130
+
+
+state 98
+
+    (49) slicing -> variables CIZQ RANGO CDER .
+
+    WHILE           reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    FOR             reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    PUTS            reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    UNLESS          reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    COMENTARIO      reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    IF              reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    CASE            reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    BEGIN           reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    FUNCION         reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    CADENA          reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    VARIABLE_LOCAL  reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    VARIABLE_GLOBAL reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    VARIABLE_OBJETO reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    VARIABLE_CLASE  reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    CONSTANTE       reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    $end            reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    END             reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    BREAK           reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    WHEN            reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+    ELSE            reduce using rule 49 (slicing -> variables CIZQ RANGO CDER .)
+
+
+state 99
+
+    (50) slicing -> variables CIZQ CADENA CDER .
+
+    WHILE           reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    FOR             reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    PUTS            reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    UNLESS          reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    COMENTARIO      reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    IF              reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    CASE            reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    BEGIN           reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    FUNCION         reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    CADENA          reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    VARIABLE_LOCAL  reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    VARIABLE_GLOBAL reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    VARIABLE_OBJETO reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    VARIABLE_CLASE  reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    CONSTANTE       reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    $end            reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    END             reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    BREAK           reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    WHEN            reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+    ELSE            reduce using rule 50 (slicing -> variables CIZQ CADENA CDER .)
+
+
+state 100
 
     (24) push -> variables PUNTO PUSH PIZQ . valor PDER
     (70) valor -> . ENTERO
@@ -2986,12 +3003,12 @@ state 97
     CONSTANTE       shift and go to state 33
 
     variables                      shift and go to state 43
-    valor                          shift and go to state 128
+    valor                          shift and go to state 131
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 98
+state 101
 
     (25) append -> variables PUNTO APPEND PIZQ . valor PDER
     (70) valor -> . ENTERO
@@ -3022,12 +3039,12 @@ state 98
     CONSTANTE       shift and go to state 33
 
     variables                      shift and go to state 43
-    valor                          shift and go to state 129
+    valor                          shift and go to state 132
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 99
+state 102
 
     (26) pop -> variables PUNTO POP PIZQ . valor PDER
     (27) pop -> variables PUNTO POP PIZQ . PDER
@@ -3048,7 +3065,7 @@ state 99
     (30) include -> . CADENA PUNTO INCLUDE INTERROGACION CADENA
     (22) reverse -> . CADENA PUNTO REVERSE
 
-    PDER            shift and go to state 131
+    PDER            shift and go to state 134
     ENTERO          shift and go to state 42
     CADENA          shift and go to state 44
     HASH            shift and go to state 45
@@ -3060,19 +3077,19 @@ state 99
     CONSTANTE       shift and go to state 33
 
     variables                      shift and go to state 43
-    valor                          shift and go to state 130
+    valor                          shift and go to state 133
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 100
+state 103
 
     (32) sentenciaWHILE -> WHILE comparacion DO codigo . END
 
-    END             shift and go to state 132
+    END             shift and go to state 135
 
 
-state 101
+state 104
 
     (53) comparacion -> expresion operadorComp expresion .
 
@@ -3096,7 +3113,7 @@ state 101
     OR              reduce using rule 53 (comparacion -> expresion operadorComp expresion .)
 
 
-state 102
+state 105
 
     (54) comparacion -> PIZQ expresion PDER . operadorComp expresion
     (66) operadorComp -> . MAYOR
@@ -3109,9 +3126,9 @@ state 102
     COMP_IGUAL      shift and go to state 73
     DIFERENTE       shift and go to state 74
 
-    operadorComp                   shift and go to state 133
+    operadorComp                   shift and go to state 136
 
-state 103
+state 106
 
     (55) comparacion -> PIZQ expresion operadorComp . expresion PDER
     (46) expresion -> . valor
@@ -3145,14 +3162,14 @@ state 103
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    expresion                      shift and go to state 134
+    expresion                      shift and go to state 137
     valor                          shift and go to state 41
     variables                      shift and go to state 43
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 104
+state 107
 
     (52) expresion -> PIZQ valor operadorMat . expresion PDER
     (51) expresion -> valor operadorMat . expresion
@@ -3188,13 +3205,13 @@ state 104
     CONSTANTE       shift and go to state 33
 
     valor                          shift and go to state 41
-    expresion                      shift and go to state 135
+    expresion                      shift and go to state 138
     variables                      shift and go to state 43
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 105
+state 108
 
     (51) expresion -> valor operadorMat expresion .
 
@@ -3228,14 +3245,14 @@ state 105
     PDER            reduce using rule 51 (expresion -> valor operadorMat expresion .)
 
 
-state 106
+state 109
 
     (30) include -> CADENA PUNTO INCLUDE . INTERROGACION CADENA
 
-    INTERROGACION   shift and go to state 136
+    INTERROGACION   shift and go to state 139
 
 
-state 107
+state 110
 
     (22) reverse -> CADENA PUNTO REVERSE .
 
@@ -3274,21 +3291,21 @@ state 107
     OR              reduce using rule 22 (reverse -> CADENA PUNTO REVERSE .)
 
 
-state 108
+state 111
 
     (19) sentenciaFOR -> FOR variables IN range . DO codigo END
 
-    DO              shift and go to state 137
+    DO              shift and go to state 140
 
 
-state 109
+state 112
 
     (20) range -> ENTERO . RANGO ENTERO
 
-    RANGO           shift and go to state 138
+    RANGO           shift and go to state 141
 
 
-state 110
+state 113
 
     (18) unless -> UNLESS comparacion codigo END .
 
@@ -3314,7 +3331,7 @@ state 110
     ELSE            reduce using rule 18 (unless -> UNLESS comparacion codigo END .)
 
 
-state 111
+state 114
 
     (83) sentenciaIf -> IF comparaciones codigo finalIf .
 
@@ -3340,7 +3357,7 @@ state 111
     ELSE            reduce using rule 83 (sentenciaIf -> IF comparaciones codigo finalIf .)
 
 
-state 112
+state 115
 
     (84) finalIf -> END .
 
@@ -3366,14 +3383,14 @@ state 112
     ELSE            reduce using rule 84 (finalIf -> END .)
 
 
-state 113
+state 116
 
     (85) finalIf -> sentenciaBREAK . END
 
-    END             shift and go to state 139
+    END             shift and go to state 142
 
 
-state 114
+state 117
 
     (59) sentenciaBREAK -> BREAK .
     (60) sentenciaBREAK -> BREAK . variables
@@ -3390,9 +3407,9 @@ state 114
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    variables                      shift and go to state 140
+    variables                      shift and go to state 143
 
-state 115
+state 118
 
     (36) sentenciaAND -> comparacion AND comparacion .
 
@@ -3413,7 +3430,7 @@ state 115
     CONSTANTE       reduce using rule 36 (sentenciaAND -> comparacion AND comparacion .)
 
 
-state 116
+state 119
 
     (37) sentenciaOR -> comparacion OR comparacion .
 
@@ -3434,7 +3451,7 @@ state 116
     CONSTANTE       reduce using rule 37 (sentenciaOR -> comparacion OR comparacion .)
 
 
-state 117
+state 120
 
     (33) sentenciaCASE -> CASE variables sentenciaWhens ELSE . codigo END
     (1) codigo -> . algoritmo
@@ -3462,10 +3479,10 @@ state 117
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -3496,7 +3513,7 @@ state 117
     CONSTANTE       shift and go to state 33
 
     variables                      shift and go to state 18
-    codigo                         shift and go to state 141
+    codigo                         shift and go to state 144
     algoritmo                      shift and go to state 2
     asignacion                     shift and go to state 3
     sentenciaWHILE                 shift and go to state 4
@@ -3514,14 +3531,14 @@ state 117
     append                         shift and go to state 16
     pop                            shift and go to state 17
 
-state 118
+state 121
 
     (39) sentenciaWhens -> sentenciaWHEN sentenciaWhens .
 
     ELSE            reduce using rule 39 (sentenciaWhens -> sentenciaWHEN sentenciaWhens .)
 
 
-state 119
+state 122
 
     (34) sentenciaWHEN -> WHEN valorSencillo . codigo
     (35) sentenciaWHEN -> WHEN valorSencillo . THEN codigo
@@ -3550,10 +3567,10 @@ state 119
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -3567,7 +3584,7 @@ state 119
     (81) variables -> . VARIABLE_CLASE
     (82) variables -> . CONSTANTE
 
-    THEN            shift and go to state 143
+    THEN            shift and go to state 146
     WHILE           shift and go to state 19
     FOR             shift and go to state 20
     PUTS            shift and go to state 21
@@ -3584,7 +3601,7 @@ state 119
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    codigo                         shift and go to state 142
+    codigo                         shift and go to state 145
     algoritmo                      shift and go to state 2
     asignacion                     shift and go to state 3
     sentenciaWHILE                 shift and go to state 4
@@ -3603,7 +3620,7 @@ state 119
     pop                            shift and go to state 17
     variables                      shift and go to state 18
 
-state 120
+state 123
 
     (40) valorSencillo -> ENTERO .
 
@@ -3625,7 +3642,7 @@ state 120
     CONSTANTE       reduce using rule 40 (valorSencillo -> ENTERO .)
 
 
-state 121
+state 124
 
     (41) valorSencillo -> variables .
 
@@ -3647,7 +3664,7 @@ state 121
     CONSTANTE       reduce using rule 41 (valorSencillo -> variables .)
 
 
-state 122
+state 125
 
     (42) valorSencillo -> CADENA .
 
@@ -3669,7 +3686,7 @@ state 122
     CONSTANTE       reduce using rule 42 (valorSencillo -> CADENA .)
 
 
-state 123
+state 126
 
     (43) valorSencillo -> RANGO .
 
@@ -3691,17 +3708,17 @@ state 123
     CONSTANTE       reduce using rule 43 (valorSencillo -> RANGO .)
 
 
-state 124
+state 127
 
     (23) split -> CADENA PUNTO SPLIT PIZQ . valorsplit PDER
     (28) valorsplit -> . CADENA
     (29) valorsplit -> . CADENA COMA ENTERO
 
-    CADENA          shift and go to state 144
+    CADENA          shift and go to state 147
 
-    valorsplit                     shift and go to state 145
+    valorsplit                     shift and go to state 148
 
-state 125
+state 128
 
     (31) sentenciaFuncion -> FUNCION variables codigo END .
 
@@ -3727,7 +3744,7 @@ state 125
     ELSE            reduce using rule 31 (sentenciaFuncion -> FUNCION variables codigo END .)
 
 
-state 126
+state 129
 
     (52) expresion -> PIZQ valor operadorMat . expresion PDER
     (46) expresion -> . valor
@@ -3762,60 +3779,41 @@ state 126
     CONSTANTE       shift and go to state 33
 
     valor                          shift and go to state 41
-    expresion                      shift and go to state 146
+    expresion                      shift and go to state 149
     variables                      shift and go to state 43
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 127
-
-    (48) slicing -> variables CIZQ ENTERO COMA ENTERO .
-
-    WHILE           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    FOR             reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    PUTS            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    UNLESS          reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    COMENTARIO      reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    IF              reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    CASE            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    BEGIN           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    FUNCION         reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    CADENA          reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    VARIABLE_LOCAL  reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    VARIABLE_GLOBAL reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    VARIABLE_OBJETO reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    VARIABLE_CLASE  reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    CONSTANTE       reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    $end            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    END             reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    BREAK           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    WHEN            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-    ELSE            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO .)
-
-
-state 128
-
-    (24) push -> variables PUNTO PUSH PIZQ valor . PDER
-
-    PDER            shift and go to state 147
-
-
-state 129
-
-    (25) append -> variables PUNTO APPEND PIZQ valor . PDER
-
-    PDER            shift and go to state 148
-
-
 state 130
 
-    (26) pop -> variables PUNTO POP PIZQ valor . PDER
+    (48) slicing -> variables CIZQ ENTERO COMA ENTERO . CDER
 
-    PDER            shift and go to state 149
+    CDER            shift and go to state 150
 
 
 state 131
+
+    (24) push -> variables PUNTO PUSH PIZQ valor . PDER
+
+    PDER            shift and go to state 151
+
+
+state 132
+
+    (25) append -> variables PUNTO APPEND PIZQ valor . PDER
+
+    PDER            shift and go to state 152
+
+
+state 133
+
+    (26) pop -> variables PUNTO POP PIZQ valor . PDER
+
+    PDER            shift and go to state 153
+
+
+state 134
 
     (27) pop -> variables PUNTO POP PIZQ PDER .
 
@@ -3841,7 +3839,7 @@ state 131
     ELSE            reduce using rule 27 (pop -> variables PUNTO POP PIZQ PDER .)
 
 
-state 132
+state 135
 
     (32) sentenciaWHILE -> WHILE comparacion DO codigo END .
 
@@ -3867,7 +3865,7 @@ state 132
     ELSE            reduce using rule 32 (sentenciaWHILE -> WHILE comparacion DO codigo END .)
 
 
-state 133
+state 136
 
     (54) comparacion -> PIZQ expresion PDER operadorComp . expresion
     (46) expresion -> . valor
@@ -3901,27 +3899,27 @@ state 133
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    expresion                      shift and go to state 150
+    expresion                      shift and go to state 154
     valor                          shift and go to state 41
     variables                      shift and go to state 43
     split                          shift and go to state 47
     include                        shift and go to state 48
     reverse                        shift and go to state 49
 
-state 134
+state 137
 
     (55) comparacion -> PIZQ expresion operadorComp expresion . PDER
 
-    PDER            shift and go to state 151
+    PDER            shift and go to state 155
 
 
-state 135
+state 138
 
     (52) expresion -> PIZQ valor operadorMat expresion . PDER
     (51) expresion -> valor operadorMat expresion .
 
   ! shift/reduce conflict for PDER resolved as shift
-    PDER            shift and go to state 152
+    PDER            shift and go to state 156
     MAYOR           reduce using rule 51 (expresion -> valor operadorMat expresion .)
     MENOR           reduce using rule 51 (expresion -> valor operadorMat expresion .)
     COMP_IGUAL      reduce using rule 51 (expresion -> valor operadorMat expresion .)
@@ -3930,14 +3928,14 @@ state 135
   ! PDER            [ reduce using rule 51 (expresion -> valor operadorMat expresion .) ]
 
 
-state 136
+state 139
 
     (30) include -> CADENA PUNTO INCLUDE INTERROGACION . CADENA
 
-    CADENA          shift and go to state 153
+    CADENA          shift and go to state 157
 
 
-state 137
+state 140
 
     (19) sentenciaFOR -> FOR variables IN range DO . codigo END
     (1) codigo -> . algoritmo
@@ -3965,10 +3963,10 @@ state 137
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -3999,7 +3997,7 @@ state 137
     CONSTANTE       shift and go to state 33
 
     variables                      shift and go to state 18
-    codigo                         shift and go to state 154
+    codigo                         shift and go to state 158
     algoritmo                      shift and go to state 2
     asignacion                     shift and go to state 3
     sentenciaWHILE                 shift and go to state 4
@@ -4017,14 +4015,14 @@ state 137
     append                         shift and go to state 16
     pop                            shift and go to state 17
 
-state 138
+state 141
 
     (20) range -> ENTERO RANGO . ENTERO
 
-    ENTERO          shift and go to state 155
+    ENTERO          shift and go to state 159
 
 
-state 139
+state 142
 
     (85) finalIf -> sentenciaBREAK END .
 
@@ -4050,21 +4048,21 @@ state 139
     ELSE            reduce using rule 85 (finalIf -> sentenciaBREAK END .)
 
 
-state 140
+state 143
 
     (60) sentenciaBREAK -> BREAK variables .
 
     END             reduce using rule 60 (sentenciaBREAK -> BREAK variables .)
 
 
-state 141
+state 144
 
     (33) sentenciaCASE -> CASE variables sentenciaWhens ELSE codigo . END
 
-    END             shift and go to state 156
+    END             shift and go to state 160
 
 
-state 142
+state 145
 
     (34) sentenciaWHEN -> WHEN valorSencillo codigo .
 
@@ -4072,7 +4070,7 @@ state 142
     ELSE            reduce using rule 34 (sentenciaWHEN -> WHEN valorSencillo codigo .)
 
 
-state 143
+state 146
 
     (35) sentenciaWHEN -> WHEN valorSencillo THEN . codigo
     (1) codigo -> . algoritmo
@@ -4100,10 +4098,10 @@ state 143
     (86) comentarios -> . COMENTARIO
     (83) sentenciaIf -> . IF comparaciones codigo finalIf
     (33) sentenciaCASE -> . CASE variables sentenciaWhens ELSE codigo END
-    (47) slicing -> . variables CIZQ ENTERO
-    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO
-    (49) slicing -> . variables CIZQ RANGO
-    (50) slicing -> . variables CIZQ CADENA
+    (47) slicing -> . variables CIZQ ENTERO CDER
+    (48) slicing -> . variables CIZQ ENTERO COMA ENTERO CDER
+    (49) slicing -> . variables CIZQ RANGO CDER
+    (50) slicing -> . variables CIZQ CADENA CDER
     (44) sentenciaBegin -> . BEGIN codigo END
     (31) sentenciaFuncion -> . FUNCION variables codigo END
     (23) split -> . CADENA PUNTO SPLIT PIZQ valorsplit PDER
@@ -4133,7 +4131,7 @@ state 143
     VARIABLE_CLASE  shift and go to state 32
     CONSTANTE       shift and go to state 33
 
-    codigo                         shift and go to state 157
+    codigo                         shift and go to state 161
     algoritmo                      shift and go to state 2
     asignacion                     shift and go to state 3
     sentenciaWHILE                 shift and go to state 4
@@ -4152,30 +4150,56 @@ state 143
     pop                            shift and go to state 17
     variables                      shift and go to state 18
 
-state 144
+state 147
 
     (28) valorsplit -> CADENA .
     (29) valorsplit -> CADENA . COMA ENTERO
 
     PDER            reduce using rule 28 (valorsplit -> CADENA .)
-    COMA            shift and go to state 158
+    COMA            shift and go to state 162
 
 
-state 145
+state 148
 
     (23) split -> CADENA PUNTO SPLIT PIZQ valorsplit . PDER
 
-    PDER            shift and go to state 159
+    PDER            shift and go to state 163
 
 
-state 146
+state 149
 
     (52) expresion -> PIZQ valor operadorMat expresion . PDER
 
-    PDER            shift and go to state 152
+    PDER            shift and go to state 156
 
 
-state 147
+state 150
+
+    (48) slicing -> variables CIZQ ENTERO COMA ENTERO CDER .
+
+    WHILE           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    FOR             reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    PUTS            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    UNLESS          reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    COMENTARIO      reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    IF              reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    CASE            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    BEGIN           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    FUNCION         reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    CADENA          reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    VARIABLE_LOCAL  reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    VARIABLE_GLOBAL reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    VARIABLE_OBJETO reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    VARIABLE_CLASE  reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    CONSTANTE       reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    $end            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    END             reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    BREAK           reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    WHEN            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+    ELSE            reduce using rule 48 (slicing -> variables CIZQ ENTERO COMA ENTERO CDER .)
+
+
+state 151
 
     (24) push -> variables PUNTO PUSH PIZQ valor PDER .
 
@@ -4201,7 +4225,7 @@ state 147
     ELSE            reduce using rule 24 (push -> variables PUNTO PUSH PIZQ valor PDER .)
 
 
-state 148
+state 152
 
     (25) append -> variables PUNTO APPEND PIZQ valor PDER .
 
@@ -4227,7 +4251,7 @@ state 148
     ELSE            reduce using rule 25 (append -> variables PUNTO APPEND PIZQ valor PDER .)
 
 
-state 149
+state 153
 
     (26) pop -> variables PUNTO POP PIZQ valor PDER .
 
@@ -4253,7 +4277,7 @@ state 149
     ELSE            reduce using rule 26 (pop -> variables PUNTO POP PIZQ valor PDER .)
 
 
-state 150
+state 154
 
     (54) comparacion -> PIZQ expresion PDER operadorComp expresion .
 
@@ -4277,7 +4301,7 @@ state 150
     OR              reduce using rule 54 (comparacion -> PIZQ expresion PDER operadorComp expresion .)
 
 
-state 151
+state 155
 
     (55) comparacion -> PIZQ expresion operadorComp expresion PDER .
 
@@ -4301,7 +4325,7 @@ state 151
     OR              reduce using rule 55 (comparacion -> PIZQ expresion operadorComp expresion PDER .)
 
 
-state 152
+state 156
 
     (52) expresion -> PIZQ valor operadorMat expresion PDER .
 
@@ -4335,7 +4359,7 @@ state 152
     OR              reduce using rule 52 (expresion -> PIZQ valor operadorMat expresion PDER .)
 
 
-state 153
+state 157
 
     (30) include -> CADENA PUNTO INCLUDE INTERROGACION CADENA .
 
@@ -4374,21 +4398,21 @@ state 153
     OR              reduce using rule 30 (include -> CADENA PUNTO INCLUDE INTERROGACION CADENA .)
 
 
-state 154
+state 158
 
     (19) sentenciaFOR -> FOR variables IN range DO codigo . END
 
-    END             shift and go to state 160
+    END             shift and go to state 164
 
 
-state 155
+state 159
 
     (20) range -> ENTERO RANGO ENTERO .
 
     DO              reduce using rule 20 (range -> ENTERO RANGO ENTERO .)
 
 
-state 156
+state 160
 
     (33) sentenciaCASE -> CASE variables sentenciaWhens ELSE codigo END .
 
@@ -4414,7 +4438,7 @@ state 156
     ELSE            reduce using rule 33 (sentenciaCASE -> CASE variables sentenciaWhens ELSE codigo END .)
 
 
-state 157
+state 161
 
     (35) sentenciaWHEN -> WHEN valorSencillo THEN codigo .
 
@@ -4422,14 +4446,14 @@ state 157
     ELSE            reduce using rule 35 (sentenciaWHEN -> WHEN valorSencillo THEN codigo .)
 
 
-state 158
+state 162
 
     (29) valorsplit -> CADENA COMA . ENTERO
 
-    ENTERO          shift and go to state 161
+    ENTERO          shift and go to state 165
 
 
-state 159
+state 163
 
     (23) split -> CADENA PUNTO SPLIT PIZQ valorsplit PDER .
 
@@ -4468,7 +4492,7 @@ state 159
     OR              reduce using rule 23 (split -> CADENA PUNTO SPLIT PIZQ valorsplit PDER .)
 
 
-state 160
+state 164
 
     (19) sentenciaFOR -> FOR variables IN range DO codigo END .
 
@@ -4494,7 +4518,7 @@ state 160
     ELSE            reduce using rule 19 (sentenciaFOR -> FOR variables IN range DO codigo END .)
 
 
-state 161
+state 165
 
     (29) valorsplit -> CADENA COMA ENTERO .
 
@@ -4503,4 +4527,4 @@ state 161
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for PDER in state 135 resolved as shift
+WARNING: shift/reduce conflict for PDER in state 138 resolved as shift

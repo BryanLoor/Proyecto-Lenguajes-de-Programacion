@@ -141,10 +141,10 @@ def p_expresion(p):
     '''
 
 def p_slicing(p):
-    ''' slicing : variables CIZQ ENTERO
-                | variables CIZQ ENTERO COMA ENTERO
-                | variables CIZQ RANGO
-                | variables CIZQ CADENA
+    ''' slicing : variables CIZQ ENTERO CDER
+                | variables CIZQ ENTERO COMA ENTERO CDER
+                | variables CIZQ RANGO CDER
+                | variables CIZQ CADENA CDER
     '''
 
 def p_expresion_aritmetica(p):
