@@ -1,17 +1,26 @@
 #INICIO del codigo
 
 src = 7
-if src > 7
-puts "el numero es mayor"
-end
-if src < 7
-puts " el numermo es menor"
-end
-if sc == 7
-puts " el numero es el correcto"
+def method_name
+  begin
+     if src > 7
+        puts "el numero es mayor"
+     end
+  end
 end
 
+if username == "foo" and password == "bar"
+	puts "Welcome, administrator"
+	break
+end
 
+if username == "marcos" or username == "carla"
+    puts "Welcome, Chef"
+end
+
+muebles = ['Silla','Mesa','Armario']
+muebles[3
+muebles[0,3
 muebles = ['Silla','Mesa','Armario']
 
 
