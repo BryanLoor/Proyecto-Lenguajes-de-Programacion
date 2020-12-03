@@ -1,3 +1,5 @@
+#Inicio del Algoritmo Nicole
+
 for x in 1..5 do
     for y in 1..5 do
         puts "Inner loop triggered"
@@ -12,3 +14,11 @@ end
 
 options = {font_size:10,font_family:"Arial"}
 person = {name:'Alejandro',last_name:'Romero',age:28}
+case str
+    when "one"
+        puts "Input is 1"
+    when "two"
+        puts "Input is 2"
+    else
+        puts "Default"
+end
