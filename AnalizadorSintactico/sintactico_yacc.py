@@ -42,6 +42,10 @@ def p_algoritmo(p):
                     | slicing
                     | sentenciaBegin
                     | sentenciaFuncion
+                    | split
+                    | push
+                    | append
+                    | pop
 
     '''
 
@@ -57,7 +61,39 @@ def p_range(p):
     '''
 
 def p_puts(p):
-    ''' puts : PUTS CADENA
+    ''' puts : PUTS valor
+
+
+    '''
+def p_reverse(p):
+    '''  reverse : CADENA PUNTO REVERSE
+
+    '''
+def p_split(p):
+    '''
+         split : CADENA PUNTO SPLIT PIZQ valorsplit PDER
+    '''
+def p_push(p) :
+    '''
+       push : variables PUNTO PUSH PIZQ valor PDER
+    '''
+def p_append(p) :
+    '''
+        append : variables PUNTO APPEND PIZQ valor PDER
+    '''
+def p_pop(p) :
+    '''
+        pop : variables PUNTO POP  PIZQ valor PDER
+            | variables PUNTO POP PIZQ  PDER
+    '''
+def p_valorsplit(p):
+    '''
+         valorsplit : CADENA
+                    | CADENA COMA ENTERO
+    '''
+def p_include(p):
+    '''
+        include : CADENA PUNTO INCLUDE INTERROGACION CADENA
     '''
 
 def p_sentenciaFuncion(p):
@@ -154,6 +190,9 @@ def p_valor(p):
                 | CADENA
                 | HASH
                 | ARRAY
+                | split
+                | include
+                | reverse
     '''
 
 def p_variables(p):
@@ -220,3 +259,4 @@ archivo3 = open("../archivos/algoritmoVilcacundo.txt")
 '''leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
 leerAlgoritmo(archivo3)'''
+leerAlgoritmo(archivo2)

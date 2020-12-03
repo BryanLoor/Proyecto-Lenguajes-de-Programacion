@@ -1,5 +1,4 @@
 # INICIO del codigo 123 %&====
-
 while $i < $num do
     $i=$i+1
 end
@@ -12,3 +11,13 @@ num0=12-4*4
 $num3=120
 a&&b
 a||b
+"hola".split("")
+$var = "hola".split(",",4)
+puts "hola".include?"la"
+str= "hola Mundo".include?"undo"
+puts "casa".reverse
+Array.push("gato")
+Array.append("hola Mundo".include?"undo")
+Array.pop("PERRO")
+
+

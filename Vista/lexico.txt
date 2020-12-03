@@ -1,0 +1,51 @@
+Token:   #Inicio del Algoritmo Nicole   Regla:  COMENTARIO
+Token:   for   Regla:  FOR
+Token:   x   Regla:  VARIABLE_LOCAL
+Token:   in   Regla:  IN
+Token:   1   Regla:  ENTERO
+Token:   ..   Regla:  RANGO
+Token:   5   Regla:  ENTERO
+Token:   do   Regla:  DO
+Token:   for   Regla:  FOR
+Token:   y   Regla:  VARIABLE_LOCAL
+Token:   in   Regla:  IN
+Token:   1   Regla:  ENTERO
+Token:   ..   Regla:  RANGO
+Token:   5   Regla:  ENTERO
+Token:   do   Regla:  DO
+Token:   puts   Regla:  PUTS
+Token:   "Inner loop triggered"   Regla:  CADENA
+Token:   end   Regla:  END
+Token:   puts   Regla:  PUTS
+Token:   "Outer loop triggered"   Regla:  CADENA
+Token:   end   Regla:  END
+Token:   weight   Regla:  VARIABLE_LOCAL
+Token:   =   Regla:  IGUAL
+Token:   90   Regla:  ENTERO
+Token:   unless   Regla:  UNLESS
+Token:   weight   Regla:  VARIABLE_LOCAL
+Token:   <   Regla:  MENOR
+Token:   85   Regla:  ENTERO
+Token:   puts   Regla:  PUTS
+Token:   "you are overweight, so you need to go on a diet and have plenty of exercise"   Regla:  CADENA
+Token:   end   Regla:  END
+Token:   options   Regla:  VARIABLE_LOCAL
+Token:   =   Regla:  IGUAL
+Token:   {font_size:10,font_family:"Arial"}   Regla:  HASH
+Token:   person   Regla:  VARIABLE_LOCAL
+Token:   =   Regla:  IGUAL
+Token:   {name:'Alejandro',last_name:'Romero',age:28}   Regla:  HASH
+Token:   case   Regla:  CASE
+Token:   str   Regla:  VARIABLE_LOCAL
+Token:   when   Regla:  WHEN
+Token:   "one"   Regla:  CADENA
+Token:   puts   Regla:  PUTS
+Token:   "Input is 1"   Regla:  CADENA
+Token:   when   Regla:  WHEN
+Token:   "two"   Regla:  CADENA
+Token:   puts   Regla:  PUTS
+Token:   "Input is 2"   Regla:  CADENA
+Token:   else   Regla:  ELSE
+Token:   puts   Regla:  PUTS
+Token:   "Default"   Regla:  CADENA
+Token:   end   Regla:  END

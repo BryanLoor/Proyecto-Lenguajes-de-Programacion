@@ -19,6 +19,18 @@ case str
         puts "Input is 1"
     when "two"
         puts "Input is 2"
+        var=1
     else
         puts "Default"
+
 end
+"hola".split("")
+$var = "hola".split(",",4)
+puts "hola".include?"la"
+str= "hola Mundo".include?"undo"
+puts "casa".reverse
+Array.push("gato")
+Array.append("hola Mundo".include?"undo")
+Array.pop("PERRO")
+
+

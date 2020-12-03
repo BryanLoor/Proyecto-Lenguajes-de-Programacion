@@ -17,6 +17,13 @@ reserved = {
     "begin" :"BEGIN",
     "and":"AND",
     "or":"OR",
+    "split" : "SPLIT",
+    "include" : "INCLUDE",
+    "reverse" : "REVERSE",
+    "push" : "PUSH",
+    "append" : "APPEND",
+    "pop" : "POP"
+
 
 }
 tokens = [
@@ -40,18 +47,21 @@ tokens = [
     "CDER",
     "ARRAY",
     "HASH",
-    "LIZQ",
-    "LDER",
     "PIZQ",
     "PDER",
     "RANGO",
     "PROD",
     "COMA",
-    "COMENTARIO"
+    "COMENTARIO",
+    "PUNTO",
+    "INTERROGACION"
+
 
 
 
 ] + list(reserved.values())
+t_INTERROGACION=r"\?"
+t_PUNTO=r"\."
 t_AND=r"&&"
 t_OR=r"\|\|"
 t_IGUAL= r"="
@@ -69,8 +79,6 @@ t_DIVISION=r"/"
 t_CIZQ = r"\["
 t_CDER = r"\]"
 t_COMA = r","
-t_LIZQ = r"\{"
-t_LDER = r"\}"
 t_PIZQ = r"\("
 t_PDER = r"\)"
 t_RANGO= r"\.\."

@@ -1,0 +1,72 @@
+Reglas del Lenguaje
+S' -> codigo
+codigo -> algoritmo
+codigo -> algoritmo codigo
+algoritmo -> asignacion
+algoritmo -> sentenciaWHILE
+algoritmo -> sentenciaFOR
+algoritmo -> puts
+algoritmo -> unless
+algoritmo -> comentarios
+algoritmo -> sentenciaIf
+algoritmo -> sentenciaCASE
+algoritmo -> slicing
+algoritmo -> sentenciaBegin
+algoritmo -> sentenciaFuncion
+unless -> UNLESS comparacion codigo END
+sentenciaFOR -> FOR variables IN range DO codigo END
+range -> ENTERO RANGO ENTERO
+puts -> PUTS CADENA
+sentenciaFuncion -> FUNCION variables codigo END
+sentenciaWHILE -> WHILE comparacion DO codigo END
+sentenciaCASE -> CASE variables sentenciaWhens ELSE codigo END
+sentenciaWHEN -> WHEN valorSencillo codigo
+sentenciaWHEN -> WHEN valorSencillo THEN codigo
+sentenciaAND -> comparacion AND comparacion
+sentenciaOR -> comparacion OR comparacion
+sentenciaWhens -> sentenciaWHEN
+sentenciaWhens -> sentenciaWHEN sentenciaWhens
+valorSencillo -> ENTERO
+valorSencillo -> variables
+valorSencillo -> CADENA
+valorSencillo -> RANGO
+sentenciaBegin -> BEGIN codigo END
+asignacion -> variables IGUAL expresion
+expresion -> valor
+slicing -> variables CIZQ ENTERO
+slicing -> variables CIZQ ENTERO COMA ENTERO
+slicing -> variables CIZQ RANGO
+slicing -> variables CIZQ CADENA
+expresion -> valor operadorMat expresion
+expresion -> PIZQ valor operadorMat expresion PDER
+comparacion -> expresion operadorComp expresion
+comparacion -> PIZQ expresion PDER operadorComp expresion
+comparacion -> PIZQ expresion operadorComp expresion PDER
+comparaciones -> comparacion
+comparaciones -> sentenciaAND
+comparaciones -> sentenciaOR
+sentenciaBREAK -> BREAK
+sentenciaBREAK -> BREAK variables
+operadorMat -> MAS
+operadorMat -> RESTA
+operadorMat -> PROD
+operadorMat -> DIVISION
+operadorMat -> POTENCIA
+operadorComp -> MAYOR
+operadorComp -> MENOR
+operadorComp -> COMP_IGUAL
+operadorComp -> DIFERENTE
+valor -> ENTERO
+valor -> variables
+valor -> CADENA
+valor -> HASH
+valor -> ARRAY
+variables -> VARIABLE_LOCAL
+variables -> VARIABLE_GLOBAL
+variables -> VARIABLE_OBJETO
+variables -> VARIABLE_CLASE
+variables -> CONSTANTE
+sentenciaIf -> IF comparaciones codigo finalIf
+finalIf -> END
+finalIf -> sentenciaBREAK END
+comentarios -> COMENTARIO
