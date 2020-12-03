@@ -38,6 +38,11 @@ def p_algoritmo(p):
                     | unless
                     | comentarios
                     | sentenciaIf
+                    | sentenciaCASE
+                    | slicing
+                    | sentenciaBegin
+                    | sentenciaFuncion
+
     '''
 
 def p_unless(p):
@@ -55,26 +60,55 @@ def p_puts(p):
     ''' puts : PUTS CADENA
     '''
 
+def p_sentenciaFuncion(p):
+    ''' sentenciaFuncion : FUNCION  variables codigo  END
+    '''
 
 def p_sentenciaWhile(p):
     '''sentenciaWHILE : WHILE  comparacion DO codigo END
     '''
-'''def p_sentenciaCase(p):
-    sentenciaCase : CASE  variables WHEN valorcase codigo ELSE codigo END
-    
-'''
-'''def p_valorcase(p):
-    valorcase : ENTERO
+
+def p_sentenciaCase(p):
+    ''' sentenciaCASE : CASE variables sentenciaWhens ELSE codigo END
+    '''
+
+def p_sentenciaWhen(p):
+    ''' sentenciaWHEN : WHEN valorSencillo codigo
+                        | WHEN valorSencillo THEN codigo
+    '''
+def p_sentenciaAnd(p):
+    ''' sentenciaAND : comparacion AND comparacion
+    '''
+def p_sentenciaOr(p):
+    ''' sentenciaOR : comparacion OR comparacion
+    '''
+def p_sentenciaWhens(p):
+    '''sentenciaWhens : sentenciaWHEN
+                |  sentenciaWHEN sentenciaWhens
+    '''
+
+def p_valorSencillo(p):
+    ''' valorSencillo : ENTERO
                 | variables
                 | CADENA
-                | RANGE
-    
-'''
+                | RANGO
+    '''
+def p_sentenciaBegin(p):
+    '''sentenciaBegin : BEGIN codigo END'''
+
 def p_asignacion(p):
     'asignacion : variables IGUAL expresion'
 
+
 def p_expresion(p):
-    '''expresion : valor
+    ''' expresion : valor
+    '''
+
+def p_slicing(p):
+    ''' slicing : variables CIZQ ENTERO
+                | variables CIZQ ENTERO COMA ENTERO
+                | variables CIZQ RANGO
+                | variables CIZQ CADENA
     '''
 
 def p_expresion_aritmetica(p):
@@ -85,8 +119,19 @@ def p_expresion_aritmetica(p):
 def p_comparacion(p):
     '''comparacion : expresion operadorComp expresion
         | PIZQ expresion PDER operadorComp expresion
+        | PIZQ expresion operadorComp expresion PDER
     '''
 
+def p_comparaciones(p):
+    ''' comparaciones : comparacion
+                      | sentenciaAND
+                      | sentenciaOR
+    '''
+
+def p_sentenciaBreak(p):
+    ''' sentenciaBREAK : BREAK
+                        | BREAK variables
+    '''
 
 def p_operadorMat(p):
     '''operadorMat : MAS
@@ -119,10 +164,16 @@ def p_variables(p):
                 | CONSTANTE
     """
 def p_sentenciaIf(p):
-    'sentenciaIf : IF comparacion codigo END'
+    ''' sentenciaIf : IF comparaciones codigo finalIf
+    '''
+
+def p_finalIf(p):
+    ''' finalIf : END
+                | sentenciaBREAK END
+    '''
 
 def p_comentarios(p):
-    ''' comentarios : COMENTARIOL
+    ''' comentarios : COMENTARIO
     '''
 
 # Error rule for syntax errors
@@ -166,6 +217,6 @@ archivo1 = open("../archivos/algoritmoLoor.txt")
 archivo2 = open("../archivos/algoritmoAsqui.txt")
 archivo3 = open("../archivos/algoritmoVilcacundo.txt")
 
-leerAlgoritmo(archivo1)
+'''leerAlgoritmo(archivo1)
 leerAlgoritmo(archivo2)
-leerAlgoritmo(archivo3)
+leerAlgoritmo(archivo3)'''
