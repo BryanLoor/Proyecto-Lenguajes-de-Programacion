@@ -1,9 +1,10 @@
 import ply.lex as lex
 reserved = {
-    "alias": "ALIAS",
     "break": "BREAK",
     "case": "CASE",
     "while":"WHILE",
+    "when":"WHEN",
+    "then":"THEN",
     "end":"END",
     "do":"DO",
     "def":"FUNCION",
@@ -13,8 +14,9 @@ reserved = {
     "puts":"PUTS",
     "for":"FOR",
     "unless":"UNLESS",
-    "=begin" :"BEGINC",
-    "=end" :"ENDC"
+    "begin" :"BEGIN",
+    "and":"AND",
+    "or":"OR",
 
 }
 tokens = [
@@ -43,10 +45,9 @@ tokens = [
     "PIZQ",
     "PDER",
     "RANGO",
-    "AND",
-    "OR",
     "PROD",
-    "COMENTARIOL"
+    "COMA",
+    "COMENTARIO"
 
 
 
@@ -67,6 +68,7 @@ t_POTENCIA = r"\*\*"
 t_DIVISION=r"/"
 t_CIZQ = r"\["
 t_CDER = r"\]"
+t_COMA = r","
 t_LIZQ = r"\{"
 t_LDER = r"\}"
 t_PIZQ = r"\("
@@ -74,7 +76,7 @@ t_PDER = r"\)"
 t_RANGO= r"\.\."
 t_ARRAY = r"\[(('([a-zA-z\s])*'|[0-9]+|[0-9]+,?[0-9]*),?)+\]"
 t_HASH = r"\{((\"|')?[a-zA-Z_][a-zA-Z0-9_\s]*(\"|')?(\:|\=>)([0-9]|[1-9][0-9]*|(\"|')[\w\s]+(\"|')),?)+\}"
-t_COMENTARIOL = r"\#.*"
+t_COMENTARIO = r"\#.*"
 
 def t_CONSTANTE(t):
     r"[A-Z][a-zA-Z0-9_]*"
@@ -152,3 +154,4 @@ leer(archivo1)
 leer(archivo2)
 leer(archivo3)
 '''
+
